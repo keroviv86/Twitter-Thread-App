@@ -31,23 +31,25 @@ function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthent
     });
   }
     return (
-      <> 
+      <div className="button">
+      <div className="form-group"> 
         <form onSubmit={handleSubmit}>
-        <label>
+       
           Username
    
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        </label>
-        <label>
+          <input class="inputField" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          
+          <br/>
          Password
     
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
+        <input class="inputField" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+  
        
-        <input type="submit" value="Login!" />
+        <button class="btn btn-login" type="submit"> Log in</button>
       </form>
       {errors?errors.map(e => <div>{e}</div>):null}
-    </>
+    </div>
+    </div>
     )
 
   

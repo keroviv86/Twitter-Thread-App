@@ -31,11 +31,8 @@ function Login({ onLogin, name, setName, password, setPassword, setIsAuthenticat
           <h1>Happening now</h1>
           <h3>Join Twitter today.</h3>
           <div class="button">
-            <a href="#" class="btn btn-signup">Sign up</a>
+            <a href="#" class="btn btn-signup" >Sign up</a>
             <a href="#" class="btn btn-login">Log in</a>
-          </div>
-        </div>
-      </div>
       {showLogin ? (
         <>
           <LoginForm 
@@ -72,6 +69,10 @@ function Login({ onLogin, name, setName, password, setPassword, setIsAuthenticat
           </p>
         </>
       )}
+
+        </div>
+        </div>
+      </div>
       </body>
 
       

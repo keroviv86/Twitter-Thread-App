@@ -34,28 +34,32 @@ function SignUpForm({ onLogin, name, setName, password, setPassword }) {
   }
 
   return (
+  <div className="button">
+   <div className="form-group"> 
     <form onSubmit={handleSubmit}>
         <label>
           Username
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          <input class="inputField" type="text" value={name} onChange={(e) => setName(e.target.value)} />
         </label>
 
         <label>
          Password
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input class="inputField" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
 
         <label>
          Password Confirmation
-        <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
+        <input class="inputField" type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
         </label>
 
-        <button type="submit"> {isLoading ? "Loading..." : "Sign Up"}</button>
+        <button class="btn btn-signup" type="submit"> {isLoading ? "Loading..." : "Sign Up"}</button>
         {/* {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))} */}
        
     </form>
+    </div>
+    </div>
   );
 }
 
