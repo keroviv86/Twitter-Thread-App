@@ -12,10 +12,12 @@ import {useEffect, useState} from 'react'
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
 
 
   useEffect(() => {
-    fetch("/user")
+    fetch("/authorized_user")
     .then((res) => {
       if (res.ok) {
         res.json()
@@ -27,7 +29,14 @@ function App() {
     });
   },[])
 
-  if (!user) return <Login onLogin={setUser} />;
+  if (!user) return <Login
+    onLogin={setUser}
+    name={name}
+    setName={setName}
+    password={password}
+    setPassword={setPassword}
+    setIsAuthenticated={setIsAuthenticated}
+  />;
   // if (!isAuthenticated) return <Login error= {'please login'} setIsAuthenticated={setIsAuthenticated} onLogin={setUser}/>;
     return (
     <div className="App">
@@ -35,8 +44,13 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login
           onLogin={setUser}
+          name={name}
+          setName={setName}
+          password={password}
+          setPassword={setPassword}
+          setIsAuthenticated={setIsAuthenticated}
         />}/>
-        <Route path="/home" element={<Home/>}/>
+        <Route path="/home" element={<Home name={name} user={user}/>}/>
       </Routes>
       {/* {isAuthenticated? <p>Welcome </p>: <p>please log in</p>} */}
     </div>

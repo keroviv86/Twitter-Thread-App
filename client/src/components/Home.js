@@ -1,9 +1,13 @@
-
-function Home(){
+function Home({name, user}){
 
     return(
-        <h1>Home</h1>
+        <div>
+             <h1 className="title">Twitter<strong>Threader</strong>App</h1>
+             <p>Welcome, {user.name}!</p>
+             <img className = "homephoto" alt="home"/>
+        </div>
+ 
     )
 }
 
-export default Home
+export default Home;

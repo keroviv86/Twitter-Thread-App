@@ -10,35 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_03_221439) do
+ActiveRecord::Schema.define(version: 2022_03_03_220441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "films", force: :cascade do |t|
-    t.string "title"
-    t.string "original_title"
-    t.string "image"
-    t.string "description"
-    t.string "director"
-    t.string "producer"
-    t.integer "release_date"
-    t.integer "running_time"
-    t.integer "rt_score"
-    t.string "people"
-    t.string "species"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "user_join_films", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "film_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["film_id"], name: "index_user_join_films_on_film_id"
-    t.index ["user_id"], name: "index_user_join_films_on_user_id"
-  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -49,6 +24,4 @@ ActiveRecord::Schema.define(version: 2022_03_03_221439) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "user_join_films", "films"
-  add_foreign_key "user_join_films", "users"
 end

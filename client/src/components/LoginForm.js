@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-function LoginForm({ onLogin }) {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthenticated }) {
+  // const [name, setName] = useState("");
+  // const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,14 +21,17 @@ function LoginForm({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          onLogin(user)
+          setIsAuthenticated(true)
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
     });
   }
     return (
-        <> 
+      <> 
         <form onSubmit={handleSubmit}>
         <label>
           Username
@@ -43,8 +46,8 @@ function LoginForm({ onLogin }) {
        
         <input type="submit" value="Login!" />
       </form>
-      {/* {errors?errors.map(e => <div>{e}</div>):null} */}
-        </>
+      {errors?errors.map(e => <div>{e}</div>):null}
+    </>
     )
 
   

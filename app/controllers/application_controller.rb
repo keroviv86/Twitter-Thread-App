@@ -1,3 +1,4 @@
+
 class ApplicationController < ActionController::API
   include ActionController::Cookies
 
@@ -6,13 +7,18 @@ class ApplicationController < ActionController::API
 
   before_action :authorize
 
-  private
+  # current_user allows current user to persist when page reloads
+  def current_user
+    User.find_by(id: session[:current_user])
+  end
 
   def authorize
-    @current_user = User.find_by(id: session[:user_id])
+    @current_user = User.find_by(id: session[:current_user])
 
     render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_user
   end
+
+  private
 
 
 

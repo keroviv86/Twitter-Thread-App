@@ -1,2 +1,0 @@
-class UserJoinFilmsController < ApplicationController
-end

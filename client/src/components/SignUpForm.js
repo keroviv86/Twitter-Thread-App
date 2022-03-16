@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 
-function SignUpForm({ onLogin }) {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+function SignUpForm({ onLogin, name, setName, password, setPassword }) {
+//   const [name, setName] = useState("");
+//   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
   const [errors, setErrors] = useState([]);
