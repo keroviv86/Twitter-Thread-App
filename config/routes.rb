@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  resources :subscriptions
+  resources :comments
+  resources :likes
+  resources :tweetthreads
   resources :user_join_films
   resources :films
   # resources :users, only: [:index, :show, :create]

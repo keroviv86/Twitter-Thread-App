@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_03_220441) do
+ActiveRecord::Schema.define(version: 2022_03_17_173806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "tweetthread_id", null: false
+    t.string "comment"
+    t.integer "parent_comment_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tweetthread_id"], name: "index_comments_on_tweetthread_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "tweetthread_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tweetthread_id"], name: "index_likes_on_tweetthread_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "subscriber_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
+  create_table "tweetthreads", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "author"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -24,4 +60,9 @@ ActiveRecord::Schema.define(version: 2022_03_03_220441) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "comments", "tweetthreads"
+  add_foreign_key "comments", "users"
+  add_foreign_key "likes", "tweetthreads"
+  add_foreign_key "likes", "users"
+  add_foreign_key "subscriptions", "users"
 end
