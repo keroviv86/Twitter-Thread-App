@@ -37,15 +37,15 @@ function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthent
        
           Username
    
-          <input class="inputField" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          <input className="inputField" type="text" value={name} onChange={(e) => setName(e.target.value)} />
           
           <br/>
          Password
     
-        <input class="inputField" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input className="inputField" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
   
        
-        <button class="btn btn-login" type="submit"> Log in</button>
+        <button className="btn btn-login" type="submit"> Log in</button>
       </form>
       {errors?errors.map(e => <div>{e}</div>):null}
     </div>
