@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
 
 // action = {type:"", payload:{}}
 
@@ -40,7 +39,7 @@ const threadSlice = createSlice({
   extraReducers: {
     // handle async actions: pending, fulfilled, rejected (for errors)
     [fetchTweets.fulfilled](state, action) {
-      state.tweets = action.payload;
+      state.tweets = action.payload['data'];
     },
     [fetchThread.fulfilled](state, action) {
       state.threadData = action.payload; // updates the state for the TweetThread Component

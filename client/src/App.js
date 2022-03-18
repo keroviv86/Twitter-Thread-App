@@ -4,7 +4,7 @@ import Home from "./components/Home.js";
 import TweetThread from "./components/features/TweetThread/TweetThread.js";
 
 import NavBar from "./components/NavBar.js";
-import SignUpForm from "./components/SignUpForm";
+// import SignUpForm from "./components/SignUpForm";
 
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";

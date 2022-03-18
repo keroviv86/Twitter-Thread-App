@@ -33,12 +33,6 @@ function Login({
           <h1>Happening now</h1>
           <h3>Join Twitter today.</h3>
           <div className="button">
-            <a href="#" className="btn btn-signup">
-              Sign up
-            </a>
-            <a href="#" className="btn btn-login">
-              Log in
-            </a>
             {showLogin ? (
               <>
                 <LoginForm
