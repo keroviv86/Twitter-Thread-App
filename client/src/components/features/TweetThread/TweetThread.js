@@ -1,17 +1,25 @@
-import React, { useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import ThreadList from "./ThreadList";
-import { fetchTweets } from "./threadSlice";
+import { fetchTweets, fetchThread } from "./threadSlice";
 
-function TweetThread() {
-  const threads = useSelector((state) => state.threads.entities);
-  console.log(threads)
+function TweetThread({ threadId }) {
+  const threadData = useSelector((state) => state.threads.threadData);
+  const tweets = useSelector((state) => state.threads.tweets)
+
+  console.log(tweets)
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTweets(['1502673952572854278', '1504586176232976396', '1504590603950166019']));
-  }, [dispatch]);
+    dispatch(fetchThread(1))
+  }, [])
+
+  useEffect(() => {
+    if (threadData && threadData['tweets']) {
+      dispatch(fetchTweets(threadData['tweets']))
+    }
+  }, [threadData])
 
   return (
     <div className="App">

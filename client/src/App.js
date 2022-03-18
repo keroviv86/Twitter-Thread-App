@@ -63,7 +63,7 @@ function App() {
         <Route path="/home" element={<Home name={name} user={user} />} />
         <Route
           path="/thread"
-          element={<TweetThread name={name} user={user} />}
+          element={<TweetThread threadId={1} />}
         />
       </Routes>
       {/* {isAuthenticated? <p>Welcome </p>: <p>please log in</p>} */}

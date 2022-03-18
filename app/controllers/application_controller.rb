@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
-  # before_action :authorize
+  before_action :authorize
 
   # current_user allows current user to persist when page reloads
   def current_user
