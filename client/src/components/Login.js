@@ -30,8 +30,8 @@ function Login({
             </g>
           </svg>
 
-          <h1>Happening now</h1>
-          <h3>Join Twitter today.</h3>
+          {/* <h1>Happening now</h1> */}
+          <h3>Unravel the Thread</h3>
           <div className="button">
             {showLogin ? (
               <>

@@ -1,0 +1,22 @@
+.content-tweet {
+    font-family: Georgia,Cambria,times new roman,Times,serif;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+    margin-bottom: 1.25rem;
+    word-wrap: break-word;
+    color: #000;
+    cursor: pointer;
+  
+}
+
+.tweet-container {
+    transition: 0.3s;
+    width: 100%;
+}
+.tweet-container :hover{
+    background-color: rgba(230, 230, 242, 0.982);
+    opacity: 0.8;
+    border-radius: 5px
+}

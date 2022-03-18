@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { fetchTweets, fetchThread } from "./threadSlice";
 
-import Tweet from "./Tweet.js";
+import Thread from "./Thread.js";
 
 function TweetThread({ threadId }) {
   const threadData = useSelector((state) => state.threads.threadData);
@@ -26,7 +26,7 @@ function TweetThread({ threadId }) {
   return (
     <div className="App">
       <h1>Thread Slice</h1>
-      {tweets.map((tweet) => <Tweet key={tweet.id} tweetText={tweet.text}/>)}
+      {tweets.map((tweet) => <Thread key={tweet.id} id={tweet.id} tweetText={tweet.text}/>)}
     </div>
   );
 }

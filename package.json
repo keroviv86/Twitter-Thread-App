@@ -11,6 +11,9 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "dependencies": {
+    "@fontsource/roboto": "^4.5.3",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "react-router-dom": "^6.2.2"
   }
 }

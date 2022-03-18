@@ -2,6 +2,7 @@ import "./App.css";
 import Login from "./components/Login.js";
 import Home from "./components/Home.js";
 import TweetThread from "./components/features/TweetThread/TweetThread.js";
+import SingleTweet from "./components/features/TweetThread/SingleTweet.js";
 
 import NavBar from "./components/NavBar.js";
 // import SignUpForm from "./components/SignUpForm";
@@ -60,6 +61,7 @@ function App() {
             />
           }
         />
+        <Route path="/thread/singletweet/:id" element= {SingleTweet}/>
         <Route path="/home" element={<Home name={name} user={user} />} />
         <Route
           path="/thread"
