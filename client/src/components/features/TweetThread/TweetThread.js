@@ -5,14 +5,13 @@ import { useParams } from 'react-router-dom';
 import { fetchTweets, fetchThread } from "./threadSlice";
 
 import Thread from "./Thread.js";
-import CommentContainer from '../Comment/CommentContainer.js'
+import CommentContainer from '../Comment/CommentContainer'
 
 function TweetThread() {
   let { threadId } = useParams();
+
   const threadData = useSelector((state) => state.threads.threadData);
   const tweets = useSelector((state) => state.threads.tweets)
-
-  console.log(tweets)
 
   const dispatch = useDispatch();
 

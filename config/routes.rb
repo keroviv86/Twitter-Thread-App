@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # resources :users, only: [:index, :show, :create]
   # resources :sessions
 
+  get "/comments/tweetthread/:id", to: "comments#showForThread"
+
   post "/login", to: "sessions#login"
   delete "/logout", to: "sessions#logout"
 

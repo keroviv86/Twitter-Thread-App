@@ -9,6 +9,11 @@ class CommentsController < ApplicationController
         render json: comment, status: :ok
     end
     
+    def showForThread
+        comment = Comment.where(tweetthread_id: params[:id])
+        render json: comment, status: :ok
+    end
+
     def update
         comment = find_comment
         comment.update!(comment_params)

@@ -1,24 +1,33 @@
-import { React } from "react";
-import { useSelector } from "react-redux";
+import { React, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
-import Comment from "./Comment.js";
+import { fetchCommentsForThread } from "./commentSlice";
+
+import Comment from "./Comment";
+import CommentForm from "./CommentForm";
 
 function CommentContainer() {
-  const comments = useSelector((state) => state.threads.threadData["comments"]);
+  let { threadId } = useParams();
 
-  if (comments) {
-    const commentDisplay = comments.map((comment) => (
-      <Comment commentInfo={comment} />
-    ));
+  const comments = useSelector((state) => state.comments.entities);
 
-    return <>{commentDisplay}</>;
-  } else {
-    return (
-      <>
-        <h1>Loading...</h1>
-      </>
-    );
-  }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCommentsForThread(threadId));
+  }, []);
+
+  const commentDisplay = comments.map((comment) => (
+    <Comment key={comment.id} commentInfo={comment} />
+  ));
+
+  return (
+    <div>
+        {commentDisplay}
+        <CommentForm/>
+    </div>
+  );
 }
 
 export default CommentContainer;
