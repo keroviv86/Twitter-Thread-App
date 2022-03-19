@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
         comment = find_comment
         render json: comment, status: :ok
     end
-
+    
     def update
         comment = find_comment
         comment.update!(comment_params)

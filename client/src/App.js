@@ -61,12 +61,9 @@ function App() {
             />
           }
         />
-        <Route path="/thread/singletweet/:id" element= {SingleTweet}/>
+        <Route path="/thread/singletweet/:id" element={SingleTweet} />
         <Route path="/home" element={<Home name={name} user={user} />} />
-        <Route
-          path="/thread"
-          element={<TweetThread threadId={1} />}
-        />
+        <Route path="/thread/:threadId" element={<TweetThread />} />
       </Routes>
       {/* {isAuthenticated? <p>Welcome </p>: <p>please log in</p>} */}
     </div>

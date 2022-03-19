@@ -9,9 +9,20 @@
 puts "🌱 Seeding data..."
 
 u1 = User.create(name: 'Viv', email: "keroviv86@gmail.com", password: "12345", admin: false)
+u2 = User.create(name: 'Kevin', email: "keroviv86@gmail.com", password: "turtle", admin: false)
 
-t1 = Tweetthread.create(id: 1, title:'Test Thread #1', description: 'my first thread!', author: u1.id)
+t1 = Tweetthread.create(id: 1, title:'Test Thread #1', description: 'my first thread!', user_id: u1.id)
+t2 = Tweetthread.create(id: 2, title:'Test Thread #2', description: 'my second thread!', user_id: u2.id)
 
 Tweet.create(twitter_api_id: '1502673952572854278', tweetthread_id: t1.id, order: 0)
 Tweet.create(twitter_api_id: '1504586176232976396', tweetthread_id: t1.id, order: 1)
 Tweet.create(twitter_api_id: '1504590603950166019', tweetthread_id: t1.id, order: 2)
+
+
+Tweet.create(twitter_api_id: '1502673952572854278', tweetthread_id: t2.id, order: 2)
+Tweet.create(twitter_api_id: '1504586176232976396', tweetthread_id: t2.id, order: 1)
+Tweet.create(twitter_api_id: '1504590603950166019', tweetthread_id: t2.id, order: 0)
+
+Comment.create(user_id: u1.id, tweetthread_id: t1.id, parent_comment_id: 0, comment: 'test')
+Comment.create(user_id: u2.id, tweetthread_id: t1.id, parent_comment_id: 0, comment: 'test1')
+Comment.create(user_id: u1.id, tweetthread_id: t2.id, parent_comment_id: 0, comment: 'test2')

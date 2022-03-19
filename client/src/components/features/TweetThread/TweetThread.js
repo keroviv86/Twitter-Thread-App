@@ -1,11 +1,14 @@
 import { React, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from 'react-router-dom';
 
 import { fetchTweets, fetchThread } from "./threadSlice";
 
 import Thread from "./Thread.js";
+import CommentContainer from '../Comment/CommentContainer.js'
 
-function TweetThread({ threadId }) {
+function TweetThread() {
+  let { threadId } = useParams();
   const threadData = useSelector((state) => state.threads.threadData);
   const tweets = useSelector((state) => state.threads.tweets)
 
@@ -14,7 +17,7 @@ function TweetThread({ threadId }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchThread(1))
+    dispatch(fetchThread(threadId))
   }, [])
 
   useEffect(() => {
@@ -27,6 +30,7 @@ function TweetThread({ threadId }) {
     <div className="App">
       <h1>Thread Slice</h1>
       {tweets.map((tweet) => <Thread key={tweet.id} id={tweet.id} tweetText={tweet.text}/>)}
+      <CommentContainer />
     </div>
   );
 }

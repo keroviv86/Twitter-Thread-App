@@ -1,3 +1,6 @@
 class Tweetthread < ApplicationRecord
-    has_many :tweets
+    belongs_to :user
+    has_many :tweets 
+    has_many :comments
+    has_many :users, -> { distinct }, through: :comments
 end
