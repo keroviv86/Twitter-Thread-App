@@ -7,7 +7,7 @@ import { fetchTweets, fetchThread } from "./threadSlice";
 import Thread from "./Thread.js";
 import CommentContainer from '../Comment/CommentContainer'
 
-function TweetThread() {
+function TweetThread({user}) {
   let { threadId } = useParams();
 
   const threadData = useSelector((state) => state.threads.threadData);
@@ -29,7 +29,7 @@ function TweetThread() {
     <div className="App">
       <h1>Thread Slice</h1>
       {tweets.map((tweet) => <Thread key={tweet.id} id={tweet.id} tweetText={tweet.text}/>)}
-      <CommentContainer />
+      <CommentContainer user={user}/>
     </div>
   );
 }

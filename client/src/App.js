@@ -26,7 +26,6 @@ function App() {
       }
     });
   }, []);
-
   if (!user)
     return (
       <Login
@@ -39,6 +38,7 @@ function App() {
       />
     );
   // if (!isAuthenticated) return <Login error= {'please login'} setIsAuthenticated={setIsAuthenticated} onLogin={setUser}/>;
+  
   return (
     <div className="App">
       <NavBar
@@ -63,7 +63,7 @@ function App() {
         />
         <Route path="/thread/singletweet/:id" element={SingleTweet} />
         <Route path="/home" element={<Home name={name} user={user} />} />
-        <Route path="/thread/:threadId" element={<TweetThread />} />
+        <Route path="/thread/:threadId" element={<TweetThread user={user}/>} />
       </Routes>
       {/* {isAuthenticated? <p>Welcome </p>: <p>please log in</p>} */}
     </div>

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import { createComment } from "./commentSlice";
 
-function CommentForm() {
+function CommentForm({user}) {
   let { threadId } = useParams();
 
   const [input, setInput] = useState("");
@@ -20,7 +20,7 @@ function CommentForm() {
 
     dispatch(
       createComment({
-        user_id: 4,
+        user_id: user['id'],
         tweetthread_id: threadId,
         comment: input,
         parent_comment_id: 0,

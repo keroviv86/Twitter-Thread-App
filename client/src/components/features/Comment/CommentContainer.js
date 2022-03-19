@@ -7,7 +7,7 @@ import { fetchCommentsForThread } from "./commentSlice";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
 
-function CommentContainer() {
+function CommentContainer({user}) {
   let { threadId } = useParams();
 
   const comments = useSelector((state) => state.comments.entities);
@@ -25,7 +25,7 @@ function CommentContainer() {
   return (
     <div>
         {commentDisplay}
-        <CommentForm/>
+        <CommentForm user={user}/>
     </div>
   );
 }
