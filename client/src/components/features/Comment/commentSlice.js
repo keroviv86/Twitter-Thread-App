@@ -33,6 +33,19 @@ export const createComment = createAsyncThunk(
   }
 );
 
+export const updateComment = createAsyncThunk(
+  "comments/updateComment",
+  async (updateComment) => {
+    return fetch(`/comments/${updateComment['id']}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateComment),
+    }).then((res) => res.json());
+  }
+);
+
 const commentSlice = createSlice({
   name: "comments",
   initialState: {
@@ -49,6 +62,12 @@ const commentSlice = createSlice({
       );
     },
     [createComment.fulfilled](state, action) {
+      state.entities = [...state.entities, action.payload];
+    },
+    [updateComment.fulfilled](state, action) {
+      state.entities = state.entities.filter(
+        (comment) => comment.id !== action.payload['id']
+      )
       state.entities = [...state.entities, action.payload];
     },
   },

@@ -19,13 +19,13 @@ function CommentContainer({user}) {
   }, []);
 
   const commentDisplay = comments.map((comment) => (
-    <Comment key={comment.id} commentInfo={comment} />
+    <Comment key={comment.id} commentInfo={comment} user={user} />
   ));
 
   return (
     <div>
         {commentDisplay}
-        <CommentForm user={user}/>
+        <CommentForm user={user} commentInfo={{comment: ""}} submitMode= {true}/>
     </div>
   );
 }

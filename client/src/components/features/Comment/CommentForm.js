@@ -2,12 +2,12 @@ import { React, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { createComment } from "./commentSlice";
+import { createComment, updateComment } from "./commentSlice";
 
-function CommentForm({user}) {
+function CommentForm({ user, commentInfo, submitMode, setEdit }) {
   let { threadId } = useParams();
 
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(commentInfo["comment"]);
 
   const dispatch = useDispatch();
 
@@ -17,15 +17,24 @@ function CommentForm({user}) {
 
   function onSubmit(event) {
     event.preventDefault();
-
-    dispatch(
-      createComment({
-        user_id: user['id'],
-        tweetthread_id: threadId,
-        comment: input,
-        parent_comment_id: 0,
-      })
-    );
+    if (submitMode) {
+      dispatch(
+        createComment({
+          user_id: user["id"],
+          tweetthread_id: threadId,
+          comment: input,
+          parent_comment_id: 0,
+        })
+      );
+    } else {
+      dispatch(
+        updateComment({
+          id: commentInfo["id"],
+          comment: input,
+        })
+      );
+      setEdit(false);
+    }
 
     setInput("");
   }
