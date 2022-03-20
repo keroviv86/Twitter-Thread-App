@@ -1,7 +1,7 @@
 class TweetthreadsController < ApplicationController
     def index
         threads = Tweetthread.all
-        render json: threads, status: :ok
+        render json: threads, each_serializer: TweetthreadListSerializer, status: :ok
     end
 
     def show

@@ -2,6 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 // action = {type:"", payload:{}}
 
+export const fetchAllThreads = createAsyncThunk(
+  "threads/fetchAllThreads",
+  async () => {
+    return fetch("/tweetthreads").then((res) => res.json());
+  }
+);
+
 // async actions
 export const fetchThread = createAsyncThunk(
   "threads/fetchThread",
@@ -32,6 +39,7 @@ export const fetchTweets = createAsyncThunk(
 const threadSlice = createSlice({
   name: "threads",
   initialState: {
+    allThreads: [],
     threadData: {},
     tweets: [], // array of tweets
   },
@@ -39,10 +47,13 @@ const threadSlice = createSlice({
   extraReducers: {
     // handle async actions: pending, fulfilled, rejected (for errors)
     [fetchTweets.fulfilled](state, action) {
-      state.tweets = action.payload['data'];
+      state.tweets = action.payload["data"];
     },
     [fetchThread.fulfilled](state, action) {
       state.threadData = action.payload; // updates the state for the TweetThread Component
+    },
+    [fetchAllThreads.fulfilled](state, action) {
+      state.allThreads = action.payload; // updates the state for the TweetThread Component
     },
   },
 });

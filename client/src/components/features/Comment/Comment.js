@@ -6,7 +6,6 @@ import { deleteComment } from "./commentSlice";
 import CommentForm from "./CommentForm";
 
 function Comment({ commentInfo, user }) {
-  console.log(commentInfo);
   const [edit, setEdit] = useState(false);
 
   const dispatch = useDispatch();
