@@ -6,6 +6,8 @@ import { fetchAllThreads } from "./threadSlice";
 
 function ThreadList() {
   const threads = useSelector((state) => state.threads.allThreads);
+ 
+  console.log(threads)
 
   const dispatch = useDispatch();
 
@@ -14,19 +16,30 @@ function ThreadList() {
   }, []);
 
   const threadsToDisplay = threads.map((thread) => (
-    <tr key={thread.id}>
-      <td>
-        <NavLink to={`/thread/${thread["id"]}`}>
-          {thread["author"]["name"]}: {thread["description"]}
-        </NavLink>
-      </td>
-    </tr>
+  
+         <div key={thread.id}  className = "column">
+            <div className = "card">
+                <NavLink to={`/thread/${thread["id"]}`}>
+                <h3>{thread["author"]["name"]}</h3>
+                <br/>
+                <h5>{thread["title"]}</h5>
+                <br/>
+                <h6>{thread["description"]}</h6>
+                <br/>
+                <a className="tweet-btn">Read {thread["tweets"].length} tweets</a>
+                </NavLink>
+            </div>
+        </div>
+
+   
   ));
 
   return (
-    <table>
-      <tbody>{threadsToDisplay}</tbody>
-    </table>
+    <>
+      <div className="card-container">
+          {threadsToDisplay}
+      </div>
+    </>
   );
 }
 

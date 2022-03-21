@@ -12,6 +12,8 @@ function TweetThread({user}) {
 
   const threadData = useSelector((state) => state.threads.threadData);
   const tweets = useSelector((state) => state.threads.tweets)
+  console.log(threadData)
+  console.log(tweets)
 
   const dispatch = useDispatch();
 
