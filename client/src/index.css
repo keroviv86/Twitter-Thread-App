@@ -92,11 +92,11 @@ h3 {
   color: #1da1f2;
 }
 
-.footer {
+/* .footer {
   padding: 1rem 2%;
-}
+} */
 
-.footer nav {
+/* .footer nav {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -117,7 +117,7 @@ h3 {
 
 .footer nav a:hover {
   border-bottom: 1px solid #536471;
-}
+} */
 
 @media(max-width: 1050px) {
   .content {
