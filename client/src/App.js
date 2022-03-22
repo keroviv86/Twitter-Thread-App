@@ -3,7 +3,7 @@ import Login from "./components/Login.js";
 import Home from "./components/Home.js";
 import TweetThread from "./components/features/TweetThread/TweetThread.js";
 import SingleTweet from "./components/features/TweetThread/SingleTweet.js";
-
+import NewThread from "./components/features/TweetThread/NewThread"
 import NavBar from "./components/NavBar.js";
 // import SignUpForm from "./components/SignUpForm";
 
@@ -47,6 +47,9 @@ function App() {
         user={user}
         setUser={setUser}
       />
+      <h1 className="title">
+        Unravel<strong>The</strong>Thread
+      </h1>
       <Routes>
         <Route
           path="/login"
@@ -64,6 +67,7 @@ function App() {
         <Route path="/thread/singletweet/:id" element={SingleTweet} />
         <Route path="/home" element={<Home user={user}/>} />
         <Route path="/thread/:threadId" element={<TweetThread user={user}/>} />
+        <Route path= "/newthread" element={<NewThread/>}/>
       </Routes>
       {/* {isAuthenticated? <p>Welcome </p>: <p>please log in</p>} */}
     </div>

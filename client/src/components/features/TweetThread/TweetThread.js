@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import { fetchTweets, fetchThread } from "./threadSlice";
 
-import Thread from "./Thread.js";
+import SingleTweet from "./SingleTweet.js";
 import CommentContainer from '../Comment/CommentContainer'
 
 function TweetThread({user}) {
@@ -30,7 +30,7 @@ function TweetThread({user}) {
   return (
     <div className="App">
       <h1>Thread Slice</h1>
-      {tweets.map((tweet) => <Thread key={tweet.id} id={tweet.id} tweetText={tweet.text}/>)}
+      {tweets.map((tweet) => <SingleTweet key={tweet.id} id={tweet.id} tweetText={tweet.text}/>)}
       <CommentContainer user={user}/>
     </div>
   );
