@@ -54,10 +54,37 @@ export const fetchTweetThreadAPI = createAsyncThunk(
   }
 );
 
+export const createThread = createAsyncThunk(
+  "threads/createThread",
+  async (newThread) => {
+    return fetch(`/tweetthreads`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newThread),
+    }).then((res) => res.json());
+  }
+);
+
+export const createTweet = createAsyncThunk(
+  "threads/createTweet",
+  async (newTweet) => {
+    return fetch(`/tweets`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newTweet),
+    }).then((res) => res.json());
+  }
+);
+
 const threadSlice = createSlice({
   name: "threads",
   initialState: {
     searchId: null,
+    newThreadId: null,
     newTweets: [],
     allThreads: [],
     threadData: {},
@@ -92,6 +119,13 @@ const threadSlice = createSlice({
         state.searchId = null;
       }
     },
+    [createThread.fulfilled](state, action) {
+      state.allThreads = [...state.allThreads, action.payload]
+      state.newThreadId = action.payload["id"]
+    },
+    [createTweet.fulfilled](state, action) {
+      state.newThreadId = null
+    }
   },
 });
 

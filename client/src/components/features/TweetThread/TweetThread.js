@@ -29,8 +29,10 @@ function TweetThread({user}) {
 
   return (
     <div className="App">
-      <h1>Thread Slice</h1>
+      <h1>{threadData['title']}</h1>
       {tweets.map((tweet) => <SingleTweet key={tweet.id} id={tweet.id} tweetText={tweet.text}/>)}
+      <br/><br/>
+      Comments
       <CommentContainer user={user}/>
     </div>
   );
