@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import ThreadCard from "./ThreadCard";
 import { fetchAllThreads } from "./threadSlice";
 
-function ThreadList() {
+function ThreadList({user}) {
   const threads = useSelector((state) => state.threads.allThreads);
  
   console.log(threads)
@@ -18,7 +18,9 @@ function ThreadList() {
   const threadsToDisplay = threads.map((thread) => (
     <ThreadCard 
      key={thread.id}
+     id={thread.id}
      thread = {thread}
+     user={user}
     
     />
    

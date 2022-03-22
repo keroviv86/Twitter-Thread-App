@@ -53,7 +53,6 @@
   /* Style the counter cards */
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
   padding: 16px;
-  text-align: center;
   margin-bottom: 20px;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -66,9 +65,8 @@
   text-align: center;
   border: grey solid 1px;
   padding: 1rem;
-  width: 12rem;
+  width: 13rem;
   height: 18rem;
-  display: inline-grid;
   margin: 1rem 2rem;
   box-shadow: 3px 4px rgb(176, 145, 179);
 }
@@ -148,4 +146,25 @@ a {
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: rgba(0, 0, 0, 0.762);
+}
+
+.delete-button{
+    font-size: 1rem;
+    text-align: center;
+    color: rgb(138, 138, 138);
+    background-color: white;
+    border-color:rgb(185, 185, 185);
+    width:1.5rem;   
+    height: 1.5rem;
+    float: right;
+    border-radius: 20%;
+    padding: 0px; 
+    text-align:center; 
+    vertical-align:middle;
+    margin: auto;
+}
+.delete-button:hover {
+    border-color: #a30000;
+    background-color: rgb(255, 42, 42);
+    color: rgb(252, 252, 252);
 }

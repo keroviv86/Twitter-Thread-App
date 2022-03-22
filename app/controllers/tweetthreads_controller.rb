@@ -13,6 +13,12 @@ class TweetthreadsController < ApplicationController
         render json: tweetthread, status: :created
     end
 
+    def destroy
+        thread = find_thread
+        thread.destroy
+        head :no_content
+    end
+
     private 
     def find_thread
         thread = Tweetthread.find(params[:id])

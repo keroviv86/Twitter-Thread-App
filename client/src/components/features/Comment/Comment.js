@@ -7,6 +7,8 @@ import CommentForm from "./CommentForm";
 
 function Comment({ commentInfo, user }) {
   const [edit, setEdit] = useState(false);
+  console.log(commentInfo);
+  console.log(user)
 
   const dispatch = useDispatch();
 
@@ -16,6 +18,18 @@ function Comment({ commentInfo, user }) {
 
   function updateCommentClick(commentInfo) {
     setEdit(true);
+  }
+
+  let buttons = <></>
+  if (user.id === commentInfo["user_id"]) {
+    buttons =(
+      <div>
+        <button onClick={() => updateCommentClick(commentInfo)}>Edit</button>
+        <button onClick={() => deleteCommentClick(commentInfo["id"])}>
+        Delete
+        </button>
+      </div>
+    )
   }
 
   if (edit) {
@@ -30,10 +44,11 @@ function Comment({ commentInfo, user }) {
     return (
       <div>
         {commentInfo["commentor"]} : {commentInfo["comment"]}
-        <button onClick={() => updateCommentClick(commentInfo)}>Edit</button>
+        {/* <button onClick={() => updateCommentClick(commentInfo)}>Edit</button>
         <button onClick={() => deleteCommentClick(commentInfo["id"])}>
           Delete
-        </button>
+        </button> */}
+        {buttons}
       </div>
     );
   }

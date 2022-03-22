@@ -7,7 +7,8 @@ Basic Features:
 -user can create new article threads 
 -user can view their create threads 
 -user can comment on a thread 
--user can update/delete a comment on a thread
+-user can update/delete their own comment on a thread
+-user can delete threads created only by them
 
 ## Requirements
 

@@ -17,6 +17,19 @@ export const fetchThread = createAsyncThunk(
   }
 );
 
+export const deleteThread = createAsyncThunk(
+  "threads/deleteComment",
+  async (threadId) => {
+    fetch(`/tweetthreads/${threadId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return threadId;
+  }
+);
+
 export const fetchTweets = createAsyncThunk(
   "threads/fetchTweets",
   async (tweets) => {
@@ -102,6 +115,11 @@ const threadSlice = createSlice({
     },
     [fetchThread.fulfilled](state, action) {
       state.threadData = action.payload; // updates the state for the TweetThread Component
+    },
+    [deleteThread.fulfilled](state, action) {
+      state.allThreads= state.allThreads.filter(
+        (thread) => thread.id !== action.payload
+      );
     },
     [fetchAllThreads.fulfilled](state, action) {
       state.allThreads = action.payload; // updates the state for the TweetThread Component
