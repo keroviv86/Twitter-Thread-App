@@ -23,7 +23,7 @@ function NewThreadForm({ user }) {
           })
         );
       }
-    }
+    }   
   }, [newThreadId]);
 
   const dispatch = useDispatch();
@@ -46,24 +46,27 @@ function NewThreadForm({ user }) {
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      <label>
-        title
-        <input
-          type="text"
-          onChange={onInputChange}
-          value={input["title"]}
-          name="title"
-        />
-        <br />
-        description
-        <input
-          type="text"
-          onChange={onInputChange}
-          value={input["description"]}
-          name="description"
-        />
-      </label>
+    <form onSubmit={onSubmit}className="newThread-form">
+        <label>
+            <input
+            className="new-thread-input"
+            type="text"
+            onChange={onInputChange}
+            value={input["title"]}
+            placeholder="Name"
+            name="title"
+            />
+        </label>
+        <label>
+            <input
+            className="new-thread-input"
+            type="text"
+            onChange={onInputChange}
+            value={input["description"]}
+            placeholder="Description"
+            name="description"
+            />
+        </label>
       <input type="submit" value="Submit" name="submitComment" />
     </form>
   );

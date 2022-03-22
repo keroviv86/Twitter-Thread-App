@@ -42,12 +42,14 @@ function CommentForm({ user, commentInfo, submitMode, setEdit }) {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <label>
+        <label className= "comment-body">
           <input
             type="text"
             onChange={onInputChange}
             value={input}
             name="commentInput"
+            placeholder="Comment..."
+            className="new-comment"
           />
         </label>
         <input type="submit" value="Submit" name="submitComment" />

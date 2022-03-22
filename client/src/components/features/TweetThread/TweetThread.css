@@ -86,3 +86,35 @@
     border-radius: 0.25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+*, *:before, *:after {
+    box-sizing: border-box;
+  }
+
+.new-thread-input {
+    padding: 10px;
+    margin:10px ; 
+    border:0;
+    box-shadow:0 0 15px 4px rgba(201, 194, 194, 0.564);
+}
+.new-thread-input:hover {
+    box-shadow:0 0 4px rgba(0,0,0,0.5);
+}
+label {
+    display:block;
+}
+.comment-body{
+    margin:50px;
+    background-color: #fafafa9f;
+
+}
+.new-comment {
+    width:100%;
+    resize: vertical;
+    padding:15px;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0, 0, 0, 0.228);
+    height: 80px;
+
+}

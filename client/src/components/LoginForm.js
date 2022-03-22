@@ -37,7 +37,7 @@ function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthent
        
           Username
    
-          <input className="inputField" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <input className="inputField" type="text" value={name} onChange={(e) => setName(e.target.value)} />
           
           <br/>
          Password

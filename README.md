@@ -1,17 +1,18 @@
-# Project Template: React/Rails API
-Studio Ghibli
-<<<<<<< HEAD
-vivian read me
-=======
-gehrig
->>>>>>> 4ce37bc1a6c5843b6b555156ede868e746102230
-## Description
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
+## Description
+ Combines Twitter threads into long-form articles and provides a framework for social media interactions and donations to content creators. 
+
+Basic Features:
+-user can enter a twitter tweet ID and a thread with all parent tweets will be generated
+-user can create new article threads 
+-user can view their create threads 
+-user can comment on a thread 
+-user can update/delete a comment on a thread
 
 ## Requirements
 
+This project is scaffolded so that you can build a React frontend and Rails
+backend together, and easily deploy them to Heroku.
 - Ruby 2.7.4
 - NodeJS (v16), and npm
 - Heroku CLI
