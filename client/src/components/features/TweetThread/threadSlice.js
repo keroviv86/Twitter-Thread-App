@@ -18,7 +18,7 @@ export const fetchThread = createAsyncThunk(
 );
 
 export const deleteThread = createAsyncThunk(
-  "threads/deleteComment",
+  "threads/deleteThread",
   async (threadId) => {
     fetch(`/tweetthreads/${threadId}`, {
       method: "DELETE",

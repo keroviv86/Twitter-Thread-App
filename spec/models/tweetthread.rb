@@ -21,4 +21,14 @@ RSpec.describe Tweetthread, type: :model do
             expect(tweetthread.tweets).to include(tweet)
         end
     end
+
+    describe "validations" do
+
+        it "must have a description with at least 10 characters" do
+          expect(Tweetthread.create(title:'Test Thread #1', description: 'my first thread!', user_id: user.id)).to be_valid
+          expect(Tweetthread.create(title:'Test Thread #1', description: 'hi', user_id: user.id)).to be_invalid
+          expect(Tweetthread.create(title:'Test Thread #1', user_id: user.id)).to be_invalid
+        end
+    
+    end
 end

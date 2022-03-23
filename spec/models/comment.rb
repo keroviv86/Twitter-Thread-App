@@ -18,5 +18,26 @@ RSpec.describe Comment, type: :model do
             
             expect(comment.tweetthread).to eq(tweetthread)
         end
+
+        it 'comment is deleted from database' do
+            comment = Comment.create(user_id: user.id, tweetthread_id: tweetthread.id, parent_comment_id: 0, comment: 'test')
+            comment.destroy
+            expect{comment.reload}.to raise_error ActiveRecord::RecordNotFound
+        end
+
+        it 'comment is deleted from database on thread deletion' do
+            comment = Comment.create(user_id: user.id, tweetthread_id: tweetthread.id, parent_comment_id: 0, comment: 'test')
+            tweetthread.destroy
+            expect{comment.reload}.to raise_error ActiveRecord::RecordNotFound
+        end
+    end
+
+    describe "validations" do
+
+        it "must have a comment with at least 4 characters" do
+          expect(Comment.create(user_id: user.id, tweetthread_id: tweetthread.id, parent_comment_id: 0, comment: 'test')).to be_valid
+          expect(Comment.create(user_id: user.id, tweetthread_id: tweetthread.id, parent_comment_id: 0, comment: 'moo')).to be_invalid
+          expect(Comment.create(user_id: user.id, tweetthread_id: tweetthread.id, parent_comment_id: 0)).to be_invalid
+        end
     end
 end
