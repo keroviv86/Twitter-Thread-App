@@ -20,13 +20,13 @@ function NavBar({ isAuthenticated, setIsAuthenticated, user, setUser }) {
         <ul>
         <li><a aria-haspopup="true">Menu</a>
           <ul className = "dropdown">
-            <li><NavLink to="/sign-up">Sign-Up</NavLink></li> 
             {user ? (
               <li onClick={logout}> Logout </li>
             ) : (
               <NavLink to="/login">Login</NavLink>
             )}{" "}
-            <li><NavLink to="/home">Home</NavLink></li>
+             <li><NavLink to="/allthread">All Threads</NavLink></li> 
+            <li><NavLink to="/userthread">User Threads</NavLink></li>
             {isAuthenticated ? (
               <li>
                 <NavLink to="/newthread">New Thread</NavLink>

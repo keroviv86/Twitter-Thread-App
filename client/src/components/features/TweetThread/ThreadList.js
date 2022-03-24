@@ -2,7 +2,7 @@ import { React, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import ThreadCard from "./ThreadCard";
-import { fetchAllThreads } from "./threadSlice";
+import { fetchSubscribedThreads } from "./threadSlice";
 
 function ThreadList({user}) {
   const threads = useSelector((state) => state.threads.allThreads);
@@ -10,7 +10,7 @@ function ThreadList({user}) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllThreads());
+    dispatch(fetchSubscribedThreads(user["id"]));
   }, []);
 
   const threadsToDisplay = threads.map((thread) => (
@@ -19,9 +19,7 @@ function ThreadList({user}) {
      id={thread.id}
      thread = {thread}
      user={user}
-    
     />
-   
   ));
 
   return (

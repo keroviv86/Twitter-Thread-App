@@ -9,6 +9,13 @@ export const fetchAllThreads = createAsyncThunk(
   }
 );
 
+export const fetchSubscribedThreads = createAsyncThunk(
+  "threads/fetchSubscribedThreads",
+  async (userId) => {
+    return fetch(`/subscribed_threads/${userId}`).then((res) => res.json());
+  }
+);
+
 // async actions
 export const fetchThread = createAsyncThunk(
   "threads/fetchThread",
@@ -126,6 +133,9 @@ const threadSlice = createSlice({
     },
     [fetchAllThreads.fulfilled](state, action) {
       state.allThreads = action.payload; // updates the state for the TweetThread Component
+    },
+    [fetchSubscribedThreads.fulfilled](state, action) {
+      state.allThreads = action.payload
     },
     [fetchTweetThreadAPI.fulfilled](state, action) {
       const payload = action.payload;

@@ -4,6 +4,7 @@ import Home from "./components/Home.js";
 import TweetThread from "./components/features/TweetThread/TweetThread.js";
 import SingleTweet from "./components/features/TweetThread/SingleTweet.js";
 import NewThread from "./components/features/TweetThread/NewThread"
+import UserThread from "./components/features/TweetThread/UserThread"
 import NavBar from "./components/NavBar.js";
 // import SignUpForm from "./components/SignUpForm";
 
@@ -65,7 +66,8 @@ function App() {
           }
         />
         <Route path="/thread/singletweet/:id" element={SingleTweet} />
-        <Route path="/home" element={<Home user={user}/>} />
+        <Route path="/allthread" element={<Home/>} />
+        <Route path="/userthread" element={<UserThread user={user}/>}/>
         <Route path="/thread/:threadId" element={<TweetThread user={user}/>} />
         <Route path= "/newthread" element={<NewThread user={user}/>}/>
       </Routes>
