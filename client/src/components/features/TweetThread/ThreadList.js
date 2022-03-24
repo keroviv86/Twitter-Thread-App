@@ -7,8 +7,6 @@ import { fetchAllThreads } from "./threadSlice";
 function ThreadList({user}) {
   const threads = useSelector((state) => state.threads.allThreads);
  
-  console.log(threads)
-
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -87,7 +87,7 @@ RSpec.describe "TweetThread", type: :request do
         }
         
       ]
-      # [{"id":233,"title":"Test Thread #1","description":"my first thread!","tweets":[{"id":90,"twitter_api_id":"1502673952572854278","order":0,"tweetthread_id":233},{"id":91,"twitter_api_id":"1504586176232976396","order":1,"tweetthread_id":233},{"id":92,"twitter_api_id":"1504590603950166019","order":2,"tweetthread_id":233}],"author":{"id":236,"name":"Viv","email":"keroviv86@gmail.com","admin":false}},{"id":234,"title":"Test Thread #2","description":"my second thread!","tweets":[{"id":93,"twitter_api_id":"1502673952572854278","order":2,"tweetthread_id":234},{"id":94,"twitter_api_id":"1504586176232976396","order":1,"tweetthread_id":234},{"id":95,"twitter_api_id":"1504590603950166019","order":0,"tweetthread_id":234}],"author":{"id":237,"name":"Kevin","email":"keroviv86@gmail.com","admin":false}}]
+      
     )
     end
 

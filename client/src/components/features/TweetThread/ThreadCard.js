@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { deleteThread } from "./threadSlice"
 
 function ThreadCard({thread, id, user}){
-   
+
     const dispatch = useDispatch()
 
     function deleteThreadClick(threadId){

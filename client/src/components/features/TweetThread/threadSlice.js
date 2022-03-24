@@ -36,7 +36,8 @@ export const fetchTweets = createAsyncThunk(
     // return a Promise containing the data we want
     const ids = tweets.map((tweet) => tweet["twitter_api_id"]).join(",");
     return fetch(
-      `https://api.twitter.com/2/tweets?ids=${ids}&tweet.fields=id`,
+      // `https://api.twitter.com/2/tweets?ids=${ids}&tweet.fields=id`,
+      `https://api.twitter.com/2/tweets?ids=${ids}&expansions=author_id,referenced_tweets.id&user.fields=profile_image_url&media.fields=url`,
       {
         method: "GET",
         headers: {
@@ -54,7 +55,8 @@ export const fetchTweetThreadAPI = createAsyncThunk(
   async (tweetId) => {
     // return a Promise containing the data we want
     return fetch(
-      `https://api.twitter.com/2/tweets?ids=${tweetId}&expansions=referenced_tweets.id`,
+      // `https://api.twitter.com/2/tweets?ids=${tweetId}&expansions=referenced_tweets.id`,
+      `https://api.twitter.com/2/tweets?ids=${tweetId}&expansions=author_id,referenced_tweets.id&user.fields=profile_image_url&media.fields=url`,
       {
         method: "GET",
         headers: {
@@ -93,6 +95,7 @@ export const createTweet = createAsyncThunk(
   }
 );
 
+
 const threadSlice = createSlice({
   name: "threads",
   initialState: {
@@ -111,7 +114,7 @@ const threadSlice = createSlice({
   extraReducers: {
     // handle async actions: pending, fulfilled, rejected (for errors)
     [fetchTweets.fulfilled](state, action) {
-      state.tweets = action.payload["data"];
+      state.tweets = action.payload;
     },
     [fetchThread.fulfilled](state, action) {
       state.threadData = action.payload; // updates the state for the TweetThread Component
@@ -125,14 +128,14 @@ const threadSlice = createSlice({
       state.allThreads = action.payload; // updates the state for the TweetThread Component
     },
     [fetchTweetThreadAPI.fulfilled](state, action) {
-      const payload = action.payload["data"][0];
+      const payload = action.payload;
       state.newTweets = [payload, ...state.newTweets]; // updates the state for the TweetThread Component
 
       if (
-        "referenced_tweets" in payload &&
-        payload["referenced_tweets"][0]["type"] === "replied_to"
+        "referenced_tweets" in payload["data"][0] &&
+        payload["data"][0]["referenced_tweets"][0]["type"] === "replied_to"
       ) {
-        state.searchId = payload["referenced_tweets"][0]["id"];
+        state.searchId = payload["data"][0]["referenced_tweets"][0]["id"];
       } else {
         state.searchId = null;
       }

@@ -18,7 +18,7 @@ function NewThreadForm({ user }) {
         dispatch(
           createTweet({
             tweetthread_id: newThreadId,
-            twitter_api_id: newTweets[i]["id"],
+            twitter_api_id: newTweets[i]['data'][0]["id"],
             order: i,
           })
         );

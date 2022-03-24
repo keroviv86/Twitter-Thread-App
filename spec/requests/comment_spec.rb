@@ -17,7 +17,6 @@ RSpec.describe "Comment", type: :request do
 
             it 'returns the assoicated Tweetthread data' do
                 post '/comments', params: comment_params
-                puts response.body
                 expect(response.body).to include_json({
                     id: a_kind_of(Integer),
                     user_id: a_kind_of(Integer),

@@ -10,7 +10,6 @@ import { fetchTweetThreadAPI, setSearchId } from "./threadSlice";
 function NewThread({ user }) {
   const searchId = useSelector((state) => state.threads.searchId);
   const newTweets = useSelector((state) => state.threads.newTweets);
-
   const [input, setInput] = useState("");
 
   const dispatch = useDispatch();
@@ -32,7 +31,13 @@ function NewThread({ user }) {
   }
   console.log(newTweets);
   const displayNewTweets = newTweets.map((tweet) => (
-    <SingleTweet key={tweet.id} id={tweet.id} tweetText={tweet.text} />
+    <SingleTweet 
+    key={tweet["data"][0]['id']}
+    id={tweet["data"][0]['id']} 
+    tweetText={tweet["data"][0]['text']}
+    img={tweet["includes"]['users'][0]['profile_image_url']}
+    username= {tweet["includes"]['users'][0]['name']}
+    />
   ));
 
   return (

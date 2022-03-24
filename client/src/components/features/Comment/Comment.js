@@ -7,8 +7,6 @@ import CommentForm from "./CommentForm";
 
 function Comment({ commentInfo, user }) {
   const [edit, setEdit] = useState(false);
-  console.log(commentInfo);
-  console.log(user)
 
   const dispatch = useDispatch();
 

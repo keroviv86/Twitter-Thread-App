@@ -8,6 +8,7 @@ class TweetthreadsController < ApplicationController
         thread = find_thread
         render json: thread, status: :ok
     end
+
     def create
         tweetthread = Tweetthread.create!(tweetthread_params)
         render json: tweetthread, status: :created
@@ -17,6 +18,11 @@ class TweetthreadsController < ApplicationController
         thread = find_thread
         thread.destroy
         head :no_content
+    end
+
+    def subscribed_threads
+        user = User.find(params[:id])
+        render json: user.subscribed_threads, status: :ok
     end
 
     private 

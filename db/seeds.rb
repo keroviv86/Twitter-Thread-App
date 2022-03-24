@@ -10,15 +10,16 @@ puts "🌱 Seeding data..."
 
 u1 = User.create(name: 'Viv', email: "keroviv86@gmail.com", password: "12345", admin: false)
 u2 = User.create(name: 'Kevin', email: "keroviv86@gmail.com", password: "turtle", admin: false)
+u3 = User.create(name: 'MTurtle', email: "keroviv86@gmail.com", password: "turtle", admin: false)
+
+
+Subscription.create(user: u1, subscriber_id: u2.id)
+Subscription.create(user: u3, subscriber_id: u2.id)
 
 t1 = Tweetthread.create(title:'Test Thread #1', description: 'my first thread!', user_id: u1.id)
 t2 = Tweetthread.create(title:'Test Thread #2', description: 'my second thread!', user_id: u2.id)
 t3 = Tweetthread.create(title:'Test Thread #3', description: 'my third thread!', user_id: u1.id)
 t4 = Tweetthread.create(title:'Test Thread #4', description: 'my fourth thread!', user_id: u2.id)
-t5 = Tweetthread.create(title:'Test Thread #5', description: 'my fifth thread!', user_id: u1.id)
-t6 = Tweetthread.create(title:'Test Thread #6', description: 'my sixth thread!', user_id: u1.id)
-t7 = Tweetthread.create(title:'Test Thread #7', description: 'my seventh thread!', user_id: u2.id)
-t8 = Tweetthread.create(title:'Test Thread #8', description: 'my eighth thread!', user_id: u2.id)
 
 Tweet.create(twitter_api_id: '1502673952572854278', tweetthread_id: t1.id, order: 0)
 Tweet.create(twitter_api_id: '1504586176232976396', tweetthread_id: t1.id, order: 1)
