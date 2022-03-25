@@ -8,7 +8,7 @@ import "./Profile.css";
 function UserProfile() {
     var colorcode = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
     const [user, setUser] = useState([]);
-    let { userId} = useParams();
+    let { userId } = useParams();
 
 
     useEffect(() => {
