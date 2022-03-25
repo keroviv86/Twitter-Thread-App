@@ -4,8 +4,13 @@ import React, { useState } from "react";
 function SignUpForm({ onLogin, name, setName, password, setPassword }) {
 //   const [name, setName] = useState("");
 //   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-
+  // const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [input, setInput] = useState({
+    passwordConfirmation: "",
+    interest: "",
+    location:"",
+    profile_photo: ""
+  });
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,7 +26,10 @@ function SignUpForm({ onLogin, name, setName, password, setPassword }) {
       body: JSON.stringify({
         name,
         password,
-        password_confirmation: passwordConfirmation
+        password_confirmation: input["passwordConfirmation"],
+        interest: input["interest"],
+        location: input["location"],
+        profile_photo: input["profile_photo"]
       }),
     }).then((r) => {
       setIsLoading(false);
@@ -30,6 +38,13 @@ function SignUpForm({ onLogin, name, setName, password, setPassword }) {
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
+    });
+  }
+
+  function onInputChange(event) {
+    setInput({
+      ...input,
+      [event.target.name]: event.target.value,
     });
   }
 
@@ -49,7 +64,22 @@ function SignUpForm({ onLogin, name, setName, password, setPassword }) {
 
         <label>
          Password Confirmation
-        <input class="inputField" type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
+        <input class="inputField" type="password" name="passwordConfirmation" value={input["passwordConfirmation"]} onChange={onInputChange} />
+        </label>
+
+        <label>
+         Interest
+        <input class="inputField" type="text" name="interest" value={input["interest"]} onChange={onInputChange} />
+        </label>
+
+        <label>
+         Location
+        <input class="inputField" type="text" name="location" value={input["location"]} onChange={onInputChange} />
+        </label>
+
+        <label>
+        Profile Image URL
+        <input class="inputField" type="text"name="profile_photo"  value={input["profile_photo"]} onChange={onInputChange} />
         </label>
         
 
