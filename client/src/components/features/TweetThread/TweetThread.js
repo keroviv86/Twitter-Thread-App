@@ -12,7 +12,7 @@ function TweetThread({ user }) {
 
   const threadData = useSelector((state) => state.threads.threadData);
   const tweets = useSelector((state) => state.threads.tweets);
-  console.log(tweets);
+
 
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ function TweetThread({ user }) {
 
   let tweetsToDisplay = [];
 
-  if (tweets) {
+  if (tweets["data"]) {
     tweetsToDisplay = tweets["data"].map((tweet) => (
       <SingleTweet
         key={tweet["id"]}

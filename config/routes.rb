@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :likes
   resources :tweetthreads
-  resources :users, only: [:index, :show, :create]
+  # resources :users, only: [:index, :show, :create]
   # resources :sessions
 
   get "/comments/tweetthread/:id", to: "comments#showForThread"
@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   post "/signup", to: "users#create"
   get "/authorized_user", to: "users#show"
+  get "/users/:id", to:"users#selected_user_profile"
+
 
   get "/subscribed_threads/:id", to: "tweetthreads#subscribed_threads"
   # destroy "/logout", to: "sessions#logout"

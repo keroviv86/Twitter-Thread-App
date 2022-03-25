@@ -1,7 +1,7 @@
 import { React } from "react";
 import ThreadList from "./ThreadList";
 
-function UserThread({ user }) {
+function SubscribedThread({ user }) {
   return (
     <div>
       <p>Welcome, {user.name}!</p>
@@ -11,4 +11,4 @@ function UserThread({ user }) {
   );
 }
 
-export default UserThread;
+export default SubscribedThread;

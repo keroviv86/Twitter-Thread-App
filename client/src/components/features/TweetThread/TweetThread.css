@@ -128,11 +128,16 @@ a {
   font-family: Lato, sans-serif;
 }
 
-.author-name {
+.user-name {
   font-size: 1.1rem;
   font-weight: 700;
   float: left;
   color: rgb(189, 184, 184);
+}
+
+.user-name:hover{
+  background-color: #6c757d;
+  color: white;
 }
 
 .thread-title {

@@ -13,6 +13,12 @@ class UsersController < ApplicationController
         # end
     end
 
+    def selected_user_profile
+        user = find_user
+        render json: user, status: :ok
+    end
+
+
     def create 
         user = User.create!(user_params)
         session[:current_user] = user.id
@@ -20,6 +26,9 @@ class UsersController < ApplicationController
     end 
 
     private
+    def find_user 
+        user= User.find_by(id: params[:id])
+    end
 
     def user_params
         params.permit(:name, :password)

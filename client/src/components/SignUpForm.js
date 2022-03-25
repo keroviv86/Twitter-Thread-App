@@ -51,6 +51,7 @@ function SignUpForm({ onLogin, name, setName, password, setPassword }) {
          Password Confirmation
         <input class="inputField" type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
         </label>
+        
 
         <button class="btn btn-signup" type="submit"> {isLoading ? "Loading..." : "Sign Up"}</button>
         {/* {errors.map((err) => (

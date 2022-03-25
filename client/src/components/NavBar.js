@@ -26,7 +26,7 @@ function NavBar({ isAuthenticated, setIsAuthenticated, user, setUser }) {
               <NavLink to="/login">Login</NavLink>
             )}{" "}
              <li><NavLink to="/allthread">All Threads</NavLink></li> 
-            <li><NavLink to="/userthread">User Threads</NavLink></li>
+            <li><NavLink to="/subscribedthreads">Subscribed Threads</NavLink></li>
             {isAuthenticated ? (
               <li>
                 <NavLink to="/newthread">New Thread</NavLink>
