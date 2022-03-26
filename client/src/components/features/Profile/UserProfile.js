@@ -3,11 +3,13 @@ import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import UserThreads from './UserThreads'
+
 import "./Profile.css";
 
-function UserProfile() {
+function UserProfile({subscriber}) {
     var colorcode = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
     const [user, setUser] = useState([]);
+    const [follow, setFollow]= useState(false)
     let { userId } = useParams();
 
 
@@ -20,7 +22,22 @@ function UserProfile() {
           }
         });
       }, []);
-    console.log(user)
+
+
+    function followButton(userId, subscriberId){
+        let subscriptionObj = { 
+            user_id: userId,
+            subscriber_id: subscriberId
+        }
+       fetch("/subscriptions",{
+           method: "POST",
+           headers: {
+               "Content-Type": "application/json",
+           },
+           body: JSON.stringify(subscriptionObj)
+       }).then((res)=> res.json());
+       setFollow(true)
+    }
 
     if(user.length===0){
         return(
@@ -44,7 +61,11 @@ function UserProfile() {
                                 <small className="line"></small>
                                 <span>{user['interest']}</span>
                             </div>
-                            <button>Follow</button>
+                            {follow ?
+                                <button className="following-btn">Following</button> :
+                                <button className="follow-btn" onClick={()=>followButton(user['id'],subscriber['id'])}>Follow</button>
+                            }
+                           
                         </div>
                         <UserThreads user={user} />
                     </div>

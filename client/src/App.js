@@ -66,7 +66,7 @@ function App() {
             />
           }
         />
-        <Route path="/users/:userId" element={<UserProfile/>}/>
+        <Route path="/users/:userId" element={<UserProfile subscriber={user}/>}/>
         <Route path="/thread/singletweet/:id" element={SingleTweet} />
         <Route path="/allthread" element={<Home user={user}/>} />
         <Route path="/subscribedthreads" element={<SubscribedThread user={user}/>}/>
