@@ -1,6 +1,4 @@
 import { React, useEffect, useState } from "react";
-
-import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import UserThreads from './UserThreads'
 
@@ -50,7 +48,7 @@ function UserProfile({subscriber}) {
                   <div className = 'profile-card'style={{background:colorcode}}>
                   <div className="profile_details">
                         <div className="profile_images">
-                            <img src={user['profile_photo']} />
+                            <img src={user['profile_photo']} alt="" />
                         </div>
                         <div className="profile">
                             <h2>{user['name']}</h2>
