@@ -53,7 +53,7 @@ function NewThread({ user }) {
             className="new-thread-input"
           />
         </label>
-        <input type="submit" value="smack the booty" name="submitComment" />
+        <input className = "newThread-btn" type="submit" value="Search Thread" name="submitComment" />
       </form>
       <NewThreadForm user={user} />
       {displayNewTweets}

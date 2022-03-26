@@ -188,13 +188,15 @@ h3 {
 
 /* navbar */
 nav {
+  display: flex;
+  margin-left: auto;
   font-family: monospace;
 }
 
 ul {
-  background:rgb(175, 148, 205);
+  /* background:rgb(175, 148, 205); */
   list-style: none;
-  margin: 0;
+  /* margin: 0; */
   padding-left: 0;
 }
 
@@ -208,7 +210,7 @@ li {
   position: relative;
   text-decoration: none;
   transition-duration: 0.5s;
-  min-width: 5rem;
+  min-width: 6rem;
 }
 li:hover,
 li:focus-within {
@@ -216,7 +218,7 @@ li:focus-within {
   cursor: pointer;
 }
 ul li ul {
-  background: rgb(175, 148, 205);
+  /* background: rgb(175, 148, 205); */
   visibility: hidden;
   opacity: 0;
   min-width: 4rem;
@@ -241,6 +243,17 @@ ul li ul li {
   width: 100%;
 }
 
+.side-bar{
+  height: 100%;
+  width: 200px;
+  border-right: 1px solid #fff2;
+  padding:10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
 .search-box{
   display: flex;
   justify-content: flex-end;
@@ -253,10 +266,18 @@ ul li ul li {
   outline: none;
   border:none; */
 
+  margin: 0 auto;
   display: block;
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   padding: 16px;
   border-radius: 999px;
   background-color:#EEE
+}
+
+
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

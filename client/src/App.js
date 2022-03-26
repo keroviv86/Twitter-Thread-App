@@ -43,15 +43,21 @@ function App() {
   
   return (
     <div className="App">
-      <NavBar
-        setIsAuthenticated={setIsAuthenticated}
-        isAuthenticated={isAuthenticated}
-        user={user}
-        setUser={setUser}
-      />
-      <h1 className="title">
-        Unravel<strong>The</strong>Thread
-      </h1>
+      <div>
+        <NavBar
+          setIsAuthenticated={setIsAuthenticated}
+          isAuthenticated={isAuthenticated}
+          user={user}
+          setUser={setUser}
+        />
+      </div>
+      <br/>
+      <div>
+        <h1 className="title">
+          Unravel
+        </h1>
+      </div>
+      
       <Routes>
         <Route
           path="/login"

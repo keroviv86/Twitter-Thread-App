@@ -21,22 +21,19 @@
 }
 
 .card-container {
-  /* align-items: center;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    position:relative; */
-
   height: 100vh;
   width: 100vw;
   max-height: 800px;
-  max-width: 1280px;
+  /* max-width: 1280px; */
   min-height: 600px;
   min-width: 1000px;
-  /* display: flex; */
   justify-content: space-around;
   align-items: center;
-  margin: 0 auto;
+
+  margin: 50px;
+  height: 200px;
+ 
+  position: relative;
 }
 
 /* Float four columns side by side */
@@ -173,3 +170,24 @@ a {
     background-color: rgb(255, 42, 42);
     color: rgb(252, 252, 252);
 }
+
+.newThread-btn{
+  width: 10rem;
+  height: 2.5rem;
+  border-radius: 10vw;
+  font-size: .8rem;
+  text-decoration: none;
+  font-weight: 700;
+  background: #ba99d2;
+  color: #fff;
+  transition: all .2s ease;
+  margin-bottom: 20px;
+}
+
+.newThread-btn:hover{
+  transform: scale(1.1);
+  background: #81579f;
+  color: #fff;
+}
+
+

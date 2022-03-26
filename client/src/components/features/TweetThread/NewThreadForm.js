@@ -67,7 +67,7 @@ function NewThreadForm({ user }) {
             name="description"
             />
         </label>
-      <input type="submit" value="Submit" name="submitComment" />
+      <input className = "newThread-btn" type="submit" value="Submit" name="submitComment" />
     </form>
   );
 }

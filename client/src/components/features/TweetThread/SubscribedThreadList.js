@@ -1,10 +1,9 @@
 import { React, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
 import ThreadCard from "./ThreadCard";
 import { fetchSubscribedThreads } from "./threadSlice";
 
-function ThreadList({user}) {
+function SubscribedThreadList({user}) {
   const threads = useSelector((state) => state.threads.allThreads);
  
   const dispatch = useDispatch();
@@ -31,4 +30,4 @@ function ThreadList({user}) {
   );
 }
 
-export default ThreadList;
+export default SubscribedThreadList;

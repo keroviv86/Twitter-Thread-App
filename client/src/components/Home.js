@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import ThreadList from "./features/TweetThread/ThreadList";
+import ThreadList from "./features/TweetThread/SubscribedThreadList";
 import { fetchAllThreads } from './features/TweetThread/threadSlice';
 import ThreadCard from './features/TweetThread/ThreadCard'
 import { useSelector, useDispatch } from "react-redux";

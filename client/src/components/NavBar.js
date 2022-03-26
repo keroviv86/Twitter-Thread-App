@@ -16,7 +16,7 @@ function NavBar({ isAuthenticated, setIsAuthenticated, user, setUser }) {
     
     
     <div>
-      <nav className="nav">
+      <nav className="sidebar">
         <ul>
         <li><a aria-haspopup="true">Menu</a>
           <ul className = "dropdown">
