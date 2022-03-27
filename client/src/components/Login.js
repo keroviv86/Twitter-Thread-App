@@ -54,7 +54,7 @@ function Login({
             ) : (
               <>
                 <SignUpForm
-                  onLogin={onLogin}
+                  setShowLogin={setShowLogin}
                   name={name}
                   setName={setName}
                   password={password}

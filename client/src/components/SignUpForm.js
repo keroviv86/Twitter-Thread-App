@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function SignUpForm({ onLogin }) {
+function SignUpForm({ setShowLogin }) {
   //   const [name, setName] = useState("");
   //   const [password, setPassword] = useState("");
   // const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -14,6 +15,7 @@ function SignUpForm({ onLogin }) {
   });
 
   const [errors, setErrors] = useState([]);
+  let navigate = useNavigate(); 
 
   const [isLoading, setIsLoading] = useState(false);
   console.log(input);
@@ -35,8 +37,10 @@ function SignUpForm({ onLogin }) {
       }),
     }).then((r) => {
       setIsLoading(false);
+      console.log(r)
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        // r.json().then((user) => onLogin(user));
+        setShowLogin(true)
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

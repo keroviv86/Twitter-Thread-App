@@ -55,26 +55,14 @@ function NavBar({ isAuthenticated, setIsAuthenticated, user, setUser }) {
               <p> </p>
             )}
             {user ? (
-              <li onClick={logout}> Logout </li>
+              <li onClick={logout}> 
+              <NavLink to="/login"> Logout</NavLink>
+              </li>
             ) : (
               <NavLink to="/login">Login</NavLink>
             )}{" "}
         
           </ul>
-
-
-
-          <div class="social_media">
-            <a href="#">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
         </div>
         <div class="main_content">
           <div class="header">Welcome, {user.name}!</div>

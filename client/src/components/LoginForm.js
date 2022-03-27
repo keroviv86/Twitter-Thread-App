@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
+import { useNavigate } from "react-router-dom";
 function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthenticated }) {
   // const [name, setName] = useState("");
   // const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
+  let navigate = useNavigate(); 
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -24,11 +26,13 @@ function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthent
         r.json().then((user) => {
           onLogin(user)
           setIsAuthenticated(true)
+          navigate('/allthread')
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
     });
+
   }
     return (
       <div className="button">
