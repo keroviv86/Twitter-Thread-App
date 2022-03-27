@@ -42,8 +42,8 @@ function NewThread({ user }) {
 
   return (
     <div>
-      NewThread
       <form onSubmit={onSubmit} className="newThread-form">
+      NewThread
         <label>
           <input
             type="text"

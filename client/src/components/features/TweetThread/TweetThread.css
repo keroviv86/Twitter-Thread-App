@@ -145,6 +145,7 @@ a {
   color: white;
 }
 
+
 .thread-title {
   font-size: 1rem;
   margin-bottom: 0.5rem;
@@ -196,6 +197,10 @@ a {
   transform: scale(1.1);
   background: #81579f;
   color: #fff;
+}
+
+.newThread-form{
+  margin-left: 200px;
 }
 
 
