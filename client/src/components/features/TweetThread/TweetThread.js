@@ -41,8 +41,8 @@ function TweetThread({ user }) {
   }
 
   return (
-    <div className="App">
-      <h1>{threadData["title"]}</h1>
+    <div className="app">
+      <h3>{threadData["title"]}</h3>
       {tweetsToDisplay}
       <br />
       <br />
