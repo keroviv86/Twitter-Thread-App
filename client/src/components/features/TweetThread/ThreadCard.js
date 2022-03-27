@@ -30,10 +30,10 @@ function ThreadCard({thread, id, user}){
                     <hr/>
                     <h5 className="thread-title">{thread["title"]}</h5>
                     <br/>
-                    <h6 className="thread-description">{thread["description"]}</h6>
+                    <h7 className="thread-description">{thread["description"]}</h7>
                     <br/>             
                 <NavLink activeClassName="active" to={`/thread/${thread["id"]}`}>
-                    <a className="tweet-btn">Read {thread["tweets"].length} tweets</a>
+                    <button className="tweet-btn">Read {thread["tweets"].length} tweets</button>
                 </NavLink>
             </div>
         </div>
