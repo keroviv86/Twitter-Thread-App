@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+
 // action = {type:"", payload:{}}
 
 export const fetchAllThreads = createAsyncThunk(
@@ -87,6 +88,7 @@ export const createThread = createAsyncThunk(
       body: JSON.stringify(newThread),
     }).then((res) => res.json());
   }
+
 );
 
 export const createTweet = createAsyncThunk(

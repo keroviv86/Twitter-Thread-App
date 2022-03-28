@@ -2,11 +2,13 @@ import { useEffect } from "react";
 import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createThread, createTweet } from "./threadSlice.js";
+import { useNavigate } from "react-router-dom";
 
 function NewThreadForm({ user }) {
   const newThreadId = useSelector((state) => state.threads.newThreadId);
   const newTweets = useSelector((state) => state.threads.newTweets);
-
+  let navigate = useNavigate(); 
+  
   const [input, setInput] = useState({
     title: "",
     description: "",
@@ -43,6 +45,7 @@ function NewThreadForm({ user }) {
         user_id: user["id"],
       })
     );
+    navigate('/thread/:threadId')
   }
 
   return (

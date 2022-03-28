@@ -27,22 +27,29 @@ function TweetThread({ user }) {
   }, [threadData]);
 
   let tweetsToDisplay = [];
-
+  console.log(tweets)
   if (tweets["data"]) {
     tweetsToDisplay = tweets["data"].map((tweet) => (
       <SingleTweet
         key={tweet["id"]}
         id={tweet["id"]}
         tweetText={tweet["text"]}
-        img={tweets["includes"]["users"][0]["profile_image_url"]}
-        username={tweets["includes"]["users"][0]["name"]}
       />
     ));
   }
 
+
   return (
     <div className="app">
       <h3>{threadData["title"]}</h3>
+      <br/>
+      {tweets["data"] ? 
+      <>
+       <div>Author:{tweets["includes"]["users"][0]["name"]}</div>
+       <br/>
+        <img src={tweets["includes"]["users"][0]["profile_image_url"]} alt="profile image"/> 
+      </>
+      : null}
       {tweetsToDisplay}
       <br />
       <br />
