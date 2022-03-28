@@ -44,7 +44,7 @@ function Login({
                   setIsAuthenticated={setIsAuthenticated}
                 />
 
-                <p>
+                <p className="switch-btn">
                   Don't have an account? &nbsp;
                   <button color="secondary" onClick={() => setShowLogin(false)}>
                     Sign Up
@@ -61,7 +61,7 @@ function Login({
                   setPassword={setPassword}
                 />
 
-                <p>
+                <p className="switch-btn">
                   Already have an account? &nbsp;
                   <button color="secondary" onClick={() => setShowLogin(true)}>
                     Log In

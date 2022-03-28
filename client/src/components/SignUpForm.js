@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function SignUpForm({ setShowLogin }) {
   //   const [name, setName] = useState("");
@@ -15,10 +14,8 @@ function SignUpForm({ setShowLogin }) {
   });
 
   const [errors, setErrors] = useState([]);
-  let navigate = useNavigate(); 
 
   const [isLoading, setIsLoading] = useState(false);
-  console.log(input);
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -35,25 +32,29 @@ function SignUpForm({ setShowLogin }) {
         location: input["location"],
         profile_photo: input["profile_photo"],
       }),
-    }).then((r) => {
+    })
+    .then(res=>res.json())
+    .then((r) => {
+      
       setIsLoading(false);
-      console.log(r)
-      if (r.ok) {
+      if (!r.errors) {
         // r.json().then((user) => onLogin(user));
         setShowLogin(true)
-      } else {
-        r.json().then((err) => setErrors(err.errors));
+      } 
+      
+      else {
+        const jsonError = r.errors
+        setErrors(jsonError)
       }
     });
   }
+  
   function onInputChange(event) {
     setInput({
       ...input,
       [event.target.name]: event.target.value,
     });
   }
-
-  console.log(errors)
 
   return (
     <div className="button">
@@ -118,10 +119,8 @@ function SignUpForm({ setShowLogin }) {
             {" "}
             {isLoading ? "Loading..." : "Sign Up"}
           </button>
-          {/* {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))} */}
         </form>
+        {errors?errors.map(e => <div className="error-message">{e}</div>):null}
       </div>
     </div>
   );

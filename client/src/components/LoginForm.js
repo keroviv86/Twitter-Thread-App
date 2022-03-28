@@ -20,20 +20,25 @@ function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthent
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
-    }).then((r) => {
+    })
+    .then(res=>res.json())
+    .then((r) => {
       // setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => {
-          onLogin(user)
-          setIsAuthenticated(true)
-          navigate('/allthread')
-        });
+      if (!r.error) {
+        onLogin(r)
+        setIsAuthenticated(true)
+        navigate('/allthread')
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        // console.log(r)
+        setErrors(r)
       }
+      setName("")
+      setPassword("")
     });
-
   }
+  console.log(errors)
+
+ 
     return (
       <div className="button">
       <div className="form-group"> 
@@ -41,17 +46,18 @@ function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthent
        
           Username
    
-        <input className="inputField" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <input className="inputField" type="text" value={name} autocomplete="username" onChange={(e) => setName(e.target.value)} />
           
           <br/>
          Password
     
-        <input className="inputField" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input className="inputField" type="password" value={password} autocomplete="current-password" onChange={(e) => setPassword(e.target.value)} />
   
        
         <button className="btn btn-login" type="submit"> Log in</button>
       </form>
-      {errors?errors.map(e => <div>{e}</div>):null}
+      <br/>
+      {errors? <div className="error-message">{errors['error']}</div>:null}
     </div>
     </div>
     )

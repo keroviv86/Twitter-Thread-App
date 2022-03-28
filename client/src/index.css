@@ -392,3 +392,17 @@ body{
     display: none !important;
   }
 }
+
+.error-message{
+  color: #c33;
+  border-color: #f33;
+  background: #ffe0e0;
+  display: block !important;
+}
+
+.switch-btn{
+  color: red;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+

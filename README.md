@@ -9,6 +9,8 @@ Basic Features:
 -user can comment on a thread 
 -user can update/delete their own comment on a thread
 -user can delete threads created only by them
+-user can subscribe to other users 
+
 
 ## Requirements
 
