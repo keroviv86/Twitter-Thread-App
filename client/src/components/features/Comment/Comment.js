@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { deleteComment } from "./commentSlice";
 import CommentForm from "./CommentForm";
+import "./Comment.css";
 
 function Comment({ commentInfo, user }) {
   const [edit, setEdit] = useState(false);
@@ -22,8 +23,8 @@ function Comment({ commentInfo, user }) {
   if (user.id === commentInfo["user_id"]) {
     buttons =(
       <div>
-        <button onClick={() => updateCommentClick(commentInfo)}>Edit</button>
-        <button onClick={() => deleteCommentClick(commentInfo["id"])}>
+        <button className="comment-btn" onClick={() => updateCommentClick(commentInfo)}>Edit</button>
+        <button className="comment-btn" onClick={() => deleteCommentClick(commentInfo["id"])}>
         Delete
         </button>
       </div>
@@ -41,13 +42,18 @@ function Comment({ commentInfo, user }) {
   } else {
     return (
       <div>
-        {commentInfo["commentor"]} : {commentInfo["comment"]}
+        <div className="commentors">
+          <strong>{commentInfo["commentor"]}</strong> : {commentInfo["comment"]}
         {/* <button onClick={() => updateCommentClick(commentInfo)}>Edit</button>
         <button onClick={() => deleteCommentClick(commentInfo["id"])}>
           Delete
         </button> */}
+     
         {buttons}
       </div>
+
+      </div>
+      
     );
   }
 }

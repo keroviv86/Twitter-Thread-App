@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 function Home({ user }) {
   const [searchThread, setSearchThread] = useState("");
   const threads = useSelector((state) => state.threads.allThreads);
+  console.log(threads)
 
   const dispatch = useDispatch();
 

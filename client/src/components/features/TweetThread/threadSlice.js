@@ -90,6 +90,7 @@ export const createTweet = createAsyncThunk(
   }
 );
 
+// in the reducer make tweet states look like [{id, username, profile pic, text, media}]
 function createTweetObj(payload) {
   let tweet = payload["data"][0];
   let author = payload["includes"]["users"].find(
@@ -125,7 +126,6 @@ function createTweetObj(payload) {
     profile_image_url: author["profile_image_url"],
     media: media,
   };
-
 }
 
 const threadSlice = createSlice({
@@ -154,7 +154,6 @@ const threadSlice = createSlice({
     // in the reducer make tweet states look like [{id, username, profile pic, text, medi}]
     [fetchTweet.fulfilled](state, action) {
       let payload = action.payload
-
       state.tweets = [...state.tweets, createTweetObj(payload)];
     },
     [fetchThread.fulfilled](state, action) {
@@ -171,25 +170,30 @@ const threadSlice = createSlice({
     [fetchSubscribedThreads.fulfilled](state, action) {
       state.allThreads = action.payload;
     },
-    // in the reducer make tweet states look like [{id, username, profile pic, text, media}]
     // media is {description, image, link}
     [fetchTweetChained.fulfilled](state, action) {
       const payload = action.payload;
-      
-      let newTweetObj = createTweetObj(payload)
-
-      let references = payload["data"][0]["referenced_tweets"]
-      if (references && references[0]["type"] === "replied_to") {
-        state.searchId = references[0]["id"];
+      console.log(payload);
+      if (payload["data"]) {
+        let newTweetObj = createTweetObj(payload)
+  
+        let references = payload["data"][0]["referenced_tweets"]
+        if (references && references[0]["type"] === "replied_to") {
+          state.searchId = references[0]["id"];
+        } else {
+          state.searchId = null;
+        }
+  
+        state.newTweets = [newTweetObj, ...state.newTweets]; // updates the state for the TweetThread Component
       } else {
         state.searchId = null;
       }
-
-      state.newTweets = [newTweetObj, ...state.newTweets]; // updates the state for the TweetThread Component
     },
     [createThread.fulfilled](state, action) {
-      state.allThreads = [...state.allThreads, action.payload];
-      state.newThreadId = action.payload["id"];
+      if(action.payload["id"]){
+        state.allThreads = [...state.allThreads, action.payload];
+        state.newThreadId = action.payload["id"];
+      } 
     },
     [createTweet.fulfilled](state, action) {
       state.newThreadId = null;

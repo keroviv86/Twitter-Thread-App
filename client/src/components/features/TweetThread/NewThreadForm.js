@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom";
 function NewThreadForm({ user }) {
   const newThreadId = useSelector((state) => state.threads.newThreadId);
   const newTweets = useSelector((state) => state.threads.newTweets);
-  let navigate = useNavigate(); 
-  
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+
   const [input, setInput] = useState({
     title: "",
     description: "",
@@ -25,12 +26,11 @@ function NewThreadForm({ user }) {
           })
         );
       }
-      
-    navigate(`/thread/${newThreadId}`)
-    }   
+
+      navigate(`/thread/${newThreadId}`);
+    }
   }, [newThreadId]);
 
-  const dispatch = useDispatch();
   function onInputChange(event) {
     setInput({
       ...input,
@@ -49,31 +49,40 @@ function NewThreadForm({ user }) {
     );
   }
 
-  return (
-    <form onSubmit={onSubmit}className="newThread-form">
+  if (newTweets.length > 0) {
+    return (
+      <form onSubmit={onSubmit} className="newThread-form">
         <label>
-            <input
+          <input
             className="new-thread-input"
             type="text"
             onChange={onInputChange}
             value={input["title"]}
             placeholder="Name"
             name="title"
-            />
+          />
         </label>
         <label>
-            <input
+          <input
             className="new-thread-input"
             type="text"
             onChange={onInputChange}
             value={input["description"]}
             placeholder="Description"
             name="description"
-            />
+          />
         </label>
-      <input className = "newThread-btn" type="submit" value="Submit" name="submitComment" />
-    </form>
-  );
+        <input
+          className="newThread-btn"
+          type="submit"
+          value="Submit"
+          name="submitComment"
+        />
+      </form>
+    );
+  } else {
+    return <></>;
+  }
 }
 
 export default NewThreadForm;

@@ -52,7 +52,7 @@ function CommentForm({ user, commentInfo, submitMode, setEdit }) {
             className="new-comment"
           />
         </label>
-        <input type="submit" value="Submit" name="submitComment" />
+        <input className="comment-btn" type="submit" value="Submit" name="submitComment" />
       </form>
     </>
   );

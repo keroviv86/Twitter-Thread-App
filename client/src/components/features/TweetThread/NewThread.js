@@ -30,7 +30,7 @@ function NewThread({ user }) {
     dispatch(setSearchId(input));
     setInput("");
   }
-  console.log(newTweets);
+
   const displayNewTweets = newTweets.map((tweet) => {
     return(<SingleTweet
       key={tweet["id"]}
@@ -60,6 +60,14 @@ function NewThread({ user }) {
         />
       </form>
       <NewThreadForm user={user} />
+      {displayNewTweets.length > 0 ? (
+        <>
+          <div>Author: {newTweets[0]["username"]}</div>
+          <br />
+          <img src={newTweets[0]["profile_image_url"]} alt="" />
+          <br />
+        </>
+      ) : null}
       {displayNewTweets}
     </div>
   );
