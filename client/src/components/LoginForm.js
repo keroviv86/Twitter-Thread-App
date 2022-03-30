@@ -36,8 +36,6 @@ function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthent
       setPassword("")
     });
   }
-  console.log(errors)
-
  
     return (
       <div className="button">

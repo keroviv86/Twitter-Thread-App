@@ -5,7 +5,7 @@ import NewThreadForm from "./NewThreadForm";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { fetchTweetThreadAPI, setSearchId, clearTweets } from "./threadSlice";
+import { fetchTweetChained, setSearchId, clearTweets } from "./threadSlice";
 
 function NewThread({ user }) {
   const searchId = useSelector((state) => state.threads.searchId);
@@ -16,7 +16,7 @@ function NewThread({ user }) {
 
   useEffect(() => {
     if (searchId) {
-      dispatch(fetchTweetThreadAPI(searchId));
+      dispatch(fetchTweetChained(searchId));
     }
   }, [searchId]);
 

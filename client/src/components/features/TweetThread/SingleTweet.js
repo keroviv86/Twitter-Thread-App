@@ -4,7 +4,8 @@ import {Html5Entities} from "html-entities"
 
 function SingleTweet({ tweetText, tweetMedia }) {
   function onClick(event) {
-    console.log("click");
+    // console.log(tweetText);
+    // console.log(tweetMedia)
   }
   const htmlEntities = new Html5Entities();
 
@@ -13,7 +14,7 @@ function SingleTweet({ tweetText, tweetMedia }) {
   if (tweetMedia) {
     media = <img className="tweetImage" src={tweetMedia["image"]} alt="" />;
     if (tweetMedia["link"]) {
-      media = <a href={tweetMedia["link"]}>{media}</a>;
+      media = <a href={tweetMedia["link"]} target="_blank" rel="noreferrer">{media}</a>;
     }
   }
 

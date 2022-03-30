@@ -2,7 +2,7 @@ import { React, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { fetchTweets, fetchThread } from "./threadSlice";
+import { fetchTweet, fetchThread } from "./threadSlice";
 
 import SingleTweet from "./SingleTweet.js";
 import CommentContainer from "../Comment/CommentContainer";
@@ -21,32 +21,39 @@ function TweetThread({ user }) {
 
   useEffect(() => {
     if (threadData && threadData["tweets"]) {
-      dispatch(fetchTweets(threadData["tweets"]));
+      threadData["tweets"].map((tweet) =>
+        dispatch(fetchTweet(tweet["twitter_api_id"]))
+      );
     }
   }, [threadData]);
-  
-  const tweetsToDisplay = tweets ? tweets.map((tweet) => {
-    return (
-      <SingleTweet
-        key={tweet["id"]}
-        tweetText={tweet["text"]}
-        tweetMedia={tweet["media"]}
-      />
-    );
-  }) : <></>
+
+  let tweetsToDisplay = <></>;
+  console.log(threadData)
+  if (tweets.length > 0) {
+    tweetsToDisplay = [...tweets].sort((a, b) => threadData["tweets"].find(tweet => tweet.twitter_api_id === a.id)["order"] - threadData["tweets"].find(tweet => tweet.twitter_api_id === b.id)["order"] );
+    tweetsToDisplay = tweetsToDisplay.map((tweet) => {
+      return (
+        <SingleTweet
+          key={tweet["id"]}
+          tweetText={tweet["text"]}
+          tweetMedia={tweet["media"]}
+        />
+      );
+    });
+  }
+
+  console.log(tweets);
 
   return (
     <div className="app">
       <h3>{threadData["title"]}</h3>
       <br />
-      {tweets["data"] ? (
+      {tweets.length > 0 ? (
         <>
-          <div>Author: {tweets["includes"]["users"][0]["name"]}</div>
+          <div>Author: {tweets[0]["username"]}</div>
           <br />
-          <img
-            src={tweets["includes"]["users"][0]["profile_image_url"]}
-            alt="profile image"
-          />
+          <img src={tweets[0]["profile_image_url"]} alt="" />
+          <br />
         </>
       ) : null}
       {tweetsToDisplay}
