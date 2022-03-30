@@ -4,3 +4,14 @@
     text-align:left;
     font-size: 22px;
 }
+
+.comment-btn{
+    color: #6c757d;
+    border-color: #6c757d;
+    background-color: transparent;
+    border: 1px solid;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+}
