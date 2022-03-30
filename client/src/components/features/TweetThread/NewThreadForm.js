@@ -3,10 +3,12 @@ import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createThread, createTweet } from "./threadSlice.js";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function NewThreadForm({ user }) {
   const newThreadId = useSelector((state) => state.threads.newThreadId);
   const newTweets = useSelector((state) => state.threads.newTweets);
+  let { threadId } = useParams();
   let navigate = useNavigate(); 
   
   const [input, setInput] = useState({
@@ -25,6 +27,8 @@ function NewThreadForm({ user }) {
           })
         );
       }
+      
+    navigate(`/thread/${newThreadId}`)
     }   
   }, [newThreadId]);
 
@@ -45,7 +49,6 @@ function NewThreadForm({ user }) {
         user_id: user["id"],
       })
     );
-    navigate('/thread/:threadId')
   }
 
   return (

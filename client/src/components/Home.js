@@ -27,7 +27,7 @@ function Home({ user }) {
     />
   ));
   return (
-    <>
+    <div className = "App">
       <form className= "search-box">
           <input
           className = "search-input" 
@@ -40,7 +40,7 @@ function Home({ user }) {
       <div className="card-container">
           {threadsToDisplay}
       </div>
-    </>
+    </div>
   );
 }
 

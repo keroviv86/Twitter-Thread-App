@@ -2,8 +2,6 @@
   margin-left:200px;
 }
 
-
-
 .content-tweet {
   font-family: Georgia, Cambria, times new roman, Times, serif;
   font-style: normal;
@@ -11,6 +9,7 @@
   line-height: 1.58;
   letter-spacing: -0.003em;
   margin-bottom: 1.25rem;
+  /* margin-left: 200px; */
   word-wrap: break-word;
   color: #000;
   cursor: pointer;
@@ -19,6 +18,9 @@
 .tweet-container {
   transition: 0.3s;
   width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+
 }
 .tweet-container :hover {
   background-color: rgba(230, 230, 242, 0.982);
@@ -28,19 +30,25 @@
 
 .card-container {
   height: 100vh;
-  width: 100vw;
-  max-height: 800px;
-  /* max-width: 1280px; */
+  /* width: 100vw; */
+  /* max-height: 800px;
+  max-width: 1280px; */
+  
+
   min-height: 600px;
-  min-width: 1000px;
+  min-width: 500px;
   justify-content: space-around;
+
   align-items: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 
   margin: 50px;
   margin-left: 200px;
   height: 200px;
  
-  position: relative;
+  /* position: relative; */
 }
 
 /* Float four columns side by side */
@@ -112,7 +120,7 @@ label {
   display: block;
 }
 .comment-body {
-  margin: 50px;
+  margin: 30px;
   background-color: #fafafa9f;
 }
 .new-comment {
@@ -197,10 +205,6 @@ a {
   transform: scale(1.1);
   background: #81579f;
   color: #fff;
-}
-
-.newThread-form{
-  margin-left: 200px;
 }
 
 
