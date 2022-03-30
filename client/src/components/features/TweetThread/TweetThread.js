@@ -13,7 +13,6 @@ function TweetThread({ user }) {
   const threadData = useSelector((state) => state.threads.threadData);
   const tweets = useSelector((state) => state.threads.tweets);
 
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,31 +24,31 @@ function TweetThread({ user }) {
       dispatch(fetchTweets(threadData["tweets"]));
     }
   }, [threadData]);
-
-  let tweetsToDisplay = [];
-  console.log(tweets)
-  if (tweets["data"]) {
-    tweetsToDisplay = tweets["data"].map((tweet) => (
+  
+  const tweetsToDisplay = tweets ? tweets.map((tweet) => {
+    return (
       <SingleTweet
         key={tweet["id"]}
-        id={tweet["id"]}
         tweetText={tweet["text"]}
+        tweetMedia={tweet["media"]}
       />
-    ));
-  }
-
+    );
+  }) : <></>
 
   return (
     <div className="app">
       <h3>{threadData["title"]}</h3>
-      <br/>
-      {tweets["data"] ? 
-      <>
-       <div>Author:{tweets["includes"]["users"][0]["name"]}</div>
-       <br/>
-        <img src={tweets["includes"]["users"][0]["profile_image_url"]} alt="profile image"/> 
-      </>
-      : null}
+      <br />
+      {tweets["data"] ? (
+        <>
+          <div>Author: {tweets["includes"]["users"][0]["name"]}</div>
+          <br />
+          <img
+            src={tweets["includes"]["users"][0]["profile_image_url"]}
+            alt="profile image"
+          />
+        </>
+      ) : null}
       {tweetsToDisplay}
       <br />
       <br />

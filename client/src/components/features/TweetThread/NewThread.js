@@ -5,7 +5,7 @@ import NewThreadForm from "./NewThreadForm";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { fetchTweetThreadAPI, setSearchId } from "./threadSlice";
+import { fetchTweetThreadAPI, setSearchId, clearTweets } from "./threadSlice";
 
 function NewThread({ user }) {
   const searchId = useSelector((state) => state.threads.searchId);
@@ -26,24 +26,23 @@ function NewThread({ user }) {
 
   function onSubmit(e) {
     e.preventDefault();
+    dispatch(clearTweets())
     dispatch(setSearchId(input));
     setInput("");
   }
   console.log(newTweets);
-  const displayNewTweets = newTweets.map((tweet) => (
-    <SingleTweet 
-    key={tweet["data"][0]['id']}
-    id={tweet["data"][0]['id']} 
-    tweetText={tweet["data"][0]['text']}
-    img={tweet["includes"]['users'][0]['profile_image_url']}
-    username= {tweet["includes"]['users'][0]['name']}
-    />
-  ));
+  const displayNewTweets = newTweets.map((tweet) => {
+    return(<SingleTweet
+      key={tweet["id"]}
+      tweetText={tweet["text"]}
+      tweetMedia={tweet["media"]}
+    />);
+  });
 
   return (
     <div className="app">
       <form onSubmit={onSubmit} className="newThread-form">
-      NewThread
+        NewThread
         <label>
           <input
             type="text"
@@ -53,7 +52,12 @@ function NewThread({ user }) {
             className="new-thread-input"
           />
         </label>
-        <input className = "newThread-btn" type="submit" value="Search Thread" name="submitComment" />
+        <input
+          className="newThread-btn"
+          type="submit"
+          value="Search Thread"
+          name="submitComment"
+        />
       </form>
       <NewThreadForm user={user} />
       {displayNewTweets}

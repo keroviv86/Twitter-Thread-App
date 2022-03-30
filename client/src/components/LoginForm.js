@@ -46,12 +46,12 @@ function LoginForm({ onLogin, name, setName, password, setPassword, setIsAuthent
        
           Username
    
-        <input className="inputField" type="text" value={name} autocomplete="username" onChange={(e) => setName(e.target.value)} />
+        <input className="inputField" type="text" value={name} autoComplete="username" onChange={(e) => setName(e.target.value)} />
           
           <br/>
          Password
     
-        <input className="inputField" type="password" value={password} autocomplete="current-password" onChange={(e) => setPassword(e.target.value)} />
+        <input className="inputField" type="password" value={password} autoComplete="current-password" onChange={(e) => setPassword(e.target.value)} />
   
        
         <button className="btn btn-login" type="submit"> Log in</button>

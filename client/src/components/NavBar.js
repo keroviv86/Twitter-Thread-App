@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 import { NavLink } from "react-router-dom";
 
 function NavBar({ isAuthenticated, setIsAuthenticated, user, setUser }) {
@@ -40,13 +38,20 @@ function NavBar({ isAuthenticated, setIsAuthenticated, user, setUser }) {
     //   </nav>
     // </div>
     <>
-      <script src="https://kit.fontawesome.com/20c42ad618.js" crossOrigin="anonymous"></script>
+      <script
+        src="https://kit.fontawesome.com/20c42ad618.js"
+        crossOrigin="anonymous"
+      ></script>
       <div className="wrapper">
         <div className="sidebar">
           <h2>Menu</h2>
           <ul>
-            <li><NavLink to="/allthread">All Threads</NavLink></li>
-            <li><NavLink to="/subscribedthreads">Subscribed Threads</NavLink></li>
+            <li>
+              <NavLink to="/allthread">All Threads</NavLink>
+            </li>
+            <li>
+              <NavLink to="/subscribedthreads">Subscribed Threads</NavLink>
+            </li>
             {isAuthenticated ? (
               <li>
                 <NavLink to="/newthread">New Thread</NavLink>
@@ -55,18 +60,16 @@ function NavBar({ isAuthenticated, setIsAuthenticated, user, setUser }) {
               <p> </p>
             )}
             {user ? (
-              <li onClick={logout}> 
-              <NavLink to="/login"> Logout</NavLink>
+              <li onClick={logout}>
+                <NavLink to="/login"> Logout</NavLink>
               </li>
             ) : (
               <NavLink to="/login">Login</NavLink>
             )}{" "}
-        
           </ul>
         </div>
-        <div class="main_content">
-          <div class="header">Welcome, {user.name}!</div>
-
+        <div className="main_content">
+          <div className="header">Welcome, {user.name}!</div>
         </div>
       </div>
     </>
