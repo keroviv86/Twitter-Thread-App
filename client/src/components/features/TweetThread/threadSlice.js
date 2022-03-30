@@ -40,7 +40,6 @@ export const deleteThread = createAsyncThunk(
 let fetchFromTwitterAPI = async (tweetId) => {
   // return a Promise containing the data we want
   return fetch(
-    // `https://api.twitter.com/2/tweets?ids=${tweetId}&expansions=referenced_tweets.id`,
     `https://api.twitter.com/2/tweets?ids=${tweetId}&expansions=author_id,attachments.media_keys&tweet.fields=text,referenced_tweets,attachments,entities&user.fields=name,profile_image_url&media.fields=preview_image_url,url`,
     {
       method: "GET",
@@ -59,6 +58,7 @@ export const fetchTweet = createAsyncThunk(
   fetchFromTwitterAPI
 );
 
+// fetch a single tweet and then fetch any tweets upwards in the chain
 export const fetchTweetChained = createAsyncThunk(
   "threads/fetchTweetChained",
   fetchFromTwitterAPI

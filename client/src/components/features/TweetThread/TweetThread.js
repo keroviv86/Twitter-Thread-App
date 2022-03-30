@@ -28,9 +28,17 @@ function TweetThread({ user }) {
   }, [threadData]);
 
   let tweetsToDisplay = <></>;
-  console.log(threadData)
+  console.log(threadData);
   if (tweets.length > 0) {
-    tweetsToDisplay = [...tweets].sort((a, b) => threadData["tweets"].find(tweet => tweet.twitter_api_id === a.id)["order"] - threadData["tweets"].find(tweet => tweet.twitter_api_id === b.id)["order"] );
+    tweetsToDisplay = [...tweets].sort(
+      (a, b) =>
+        threadData["tweets"].find((tweet) => tweet.twitter_api_id === a.id)[
+          "order"
+        ] -
+        threadData["tweets"].find((tweet) => tweet.twitter_api_id === b.id)[
+          "order"
+        ]
+    );
     tweetsToDisplay = tweetsToDisplay.map((tweet) => {
       return (
         <SingleTweet

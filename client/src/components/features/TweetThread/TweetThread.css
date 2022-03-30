@@ -211,5 +211,9 @@ a {
   white-space: pre-wrap;
 }
 
+.tweetImage {
+  max-width: 720px;
+}
+
 
 
