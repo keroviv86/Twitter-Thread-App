@@ -2,7 +2,7 @@ import { React, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { fetchTweet, fetchThread } from "./threadSlice";
+import { fetchTweet, fetchThread, clearThread } from "./threadSlice";
 
 import SingleTweet from "./SingleTweet.js";
 import CommentContainer from "../Comment/CommentContainer";
@@ -17,6 +17,10 @@ function TweetThread({ user }) {
 
   useEffect(() => {
     dispatch(fetchThread(threadId));
+
+    return function cleanup() {
+      dispatch(clearThread())
+    }
   }, []);
 
   useEffect(() => {
@@ -29,6 +33,7 @@ function TweetThread({ user }) {
 
   let tweetsToDisplay = <></>;
   console.log(threadData);
+  console.log(tweets)
   if (tweets.length > 0) {
     tweetsToDisplay = [...tweets].sort(
       (a, b) =>

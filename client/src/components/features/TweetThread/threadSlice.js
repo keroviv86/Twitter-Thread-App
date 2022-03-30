@@ -147,6 +147,7 @@ const threadSlice = createSlice({
     },
     clearThread: (state, action) => {
       state.tweets = []
+      state.threadData = {}
     }
   },
   extraReducers: {
