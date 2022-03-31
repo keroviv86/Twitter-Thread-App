@@ -36,7 +36,7 @@ function Comment({ commentInfo, user }) {
       <div>
         {commentInfo["commentor"]}
         <CommentForm user={user} commentInfo={commentInfo} submitMode={false} setEdit={setEdit} />
-        <button onClick={() => setEdit(!edit)}>Cancel</button>
+        <button className="comment-btn" onClick={() => setEdit(!edit)}>Cancel</button>
       </div>
     );
   } else {

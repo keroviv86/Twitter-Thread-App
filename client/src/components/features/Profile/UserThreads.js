@@ -6,17 +6,17 @@ function UserThreads({user}) {
 
     return(
         <div className="recent_threads">
-            <h5>Recent Threads</h5>
-            <div className="created_threads">
+            <h4>Recent Threads</h4>
+            <ul className="created_threads">
                 {
                 user["tweetthreads"].map(thread =>(
                 <NavLink activeClassName="active" to={`/thread/${thread["id"]}`}>
-                <li className="create_threads_li">{thread["title"]}</li>
+                    <li className="create_threads_li">{thread["title"]}</li>
                 </NavLink>
                 ))
                 }
 
-            </div>
+            </ul>
         </div>
     )
 }
