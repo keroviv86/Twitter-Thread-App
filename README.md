@@ -15,7 +15,7 @@ Things to fix:
 -External API is on Front-end due to project requirements(not good practice)
 -fetching external API, need to use:
 open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
-to start terminal
+to start browser
 
 
 ## Requirements
