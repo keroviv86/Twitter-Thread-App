@@ -19,8 +19,16 @@ Things to fix:
 open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
 to start browser
 
-
 ![Relational Database](tables.png)
+
+
+### Tech-Stack
+-NodeJS(v116) and npm
+-Ruby 2.7.4
+-React
+-Redux
+-Postgresql
+
 ## Requirements
 
 This project is scaffolded so that you can build a React frontend and Rails
