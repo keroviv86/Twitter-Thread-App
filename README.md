@@ -2,14 +2,17 @@
 ## Description
  Combines Twitter threads into long-form articles and provides a framework for social media interactions and donations to content creators. 
 
-Basic Features:
--user can enter a twitter tweet ID and a thread with all parent tweets will be generated
--user can create new article threads 
--user can view their create threads 
--user can comment on a thread 
--user can update/delete their own comment on a thread
--user can delete threads created only by them
--user can subscribe to other users 
+### Features:
+- use can sign-up and create a new account
+- user can login with a created and authorized account
+- user can logout 
+- user can enter a twitter tweet ID and a thread with all parent tweets will be generated
+- user can create new article threads 
+- user can view their create threads 
+- user can comment on a thread 
+- user can update/delete their own comment on a thread
+- user can delete threads created only by them
+- user can subscribe to other users 
 
 
 
@@ -22,25 +25,22 @@ to start browser
 ![Relational Database](tables.png)
 
 
-### Tech-Stack
+## Tech-Stack
 
--NodeJS(v116) and npm
--Ruby 2.7.4
--React
--Redux
--Postgresql
+- NodeJS(v16) and npm
+- Ruby 2.7.4
+- React
+- Redux
+- Postgresql
 
 ## Requirements
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
-- Ruby 2.7.4
-- NodeJS (v16), and npm
-- Heroku CLI
-- Postgresql
-
-See Environment Setup below for instructions on installing these tools if you
-don't already have them.
+- Rails API backend
+- React frontend
+- Have at least two modles with a one-to-many relationship on the backend, with full CRUD actions for at least one resource.
+- Have at least two different client-side routes using React Router.
+- Implement authentication/authorization.(user should be able to log into the side and stay logged in via user ID in the session hash).
+- Testing
 
 ## Setup
 
