@@ -20,7 +20,7 @@ open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args
 to start browser
 
 
-![Relational Database](Project 5 tables.png)
+![Relational Database](tables.png)
 ## Requirements
 
 This project is scaffolded so that you can build a React frontend and Rails
